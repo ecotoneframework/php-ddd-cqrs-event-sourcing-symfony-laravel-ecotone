@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Assign ticket</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Ticket Type</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ticket in tickets %}
+                <tr>
+                    <td>{{ ticket.ticket_type }}</td>
+                    <td>{{ ticket.description }}</td>
+                    <td>
+                        <form action="/tickets/{{ ticket.ticket_id }}/assign" method="post">
+                            <input type="text" class="form-control" id="assignTo" name="assignTo" placeholder="Johny" value="" required>
+                            <button class="btn btn-primary" type="submit">Assign</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

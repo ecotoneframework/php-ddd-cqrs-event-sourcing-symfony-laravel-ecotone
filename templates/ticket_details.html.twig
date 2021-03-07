@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="table-responsive">
+        <h1>Ticket - {{ ticket.ticket_type }} - {{ ticket.status }} - {{ ticket.assigned_to }}</h1>
+            <h4>{{ ticket.description }}</h4>
+            {% if ticket.status != 'cancelled' %}
+                <form action="/tickets/{{ ticket.ticket_id }}/cancel" method="post"><button class="btn btn-danger" type="submit">Cancel</button></form>
+            {% endif %}
+    </div>
+{% endblock %}

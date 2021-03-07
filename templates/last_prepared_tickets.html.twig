@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Last created Tickets</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Ticket Type</th>
+                <th>Status</th>
+                <th>Assigned To</th>
+                <th>Prepared At</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ticket in tickets %}
+                <tr>
+                    <td>{{ ticket.ticket_type }}</td>
+                    <td>{{ ticket.status }}</td>
+                    <td>{{ ticket.assigned_to }}</td>
+                    <td>{{ ticket.prepared_at }}</td>
+                    <td>
+                        <a href="/tickets/{{ ticket.ticket_id }}" class="btn btn-info" role="button">Details</a>
+                        {% if ticket.status != 'cancelled' %}
+                            <form action="/tickets/{{ ticket.ticket_id }}/cancel" method="post"><button class="btn btn-danger" type="submit">Cancel</button></form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

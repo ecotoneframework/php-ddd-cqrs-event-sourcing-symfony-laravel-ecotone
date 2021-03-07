@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form action="/tickets" method="post">
+        <div class="row g-3">
+            <div class="col-sm-6">
+                <label for="ticketType" class="form-label">Ticket Type</label>
+                <input type="text" class="form-control" id="ticketType" name="ticketType" placeholder="Alarm" value="" required>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Send invitation to one of our customers..." value="" required>
+            </div>
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Prepare</button>
+        </div>
+    </form>
+{% endblock %}
