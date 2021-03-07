@@ -9,6 +9,11 @@ and this can be seen in the code.
 
 Have fun :)
 
+# Possible Integrations with Laravel and Ecotone Lite
+
+Application is written in `Symfony`, however `Ecotone` integrates with `Laravel` and can be run alone without any additional framework (`Ecotone Lite`).  
+All the code that is written in here, will work exactly the same way, when will be run with `Laravel` or `Ecotone Lite`.
+
 # Run
 
 ```php 
