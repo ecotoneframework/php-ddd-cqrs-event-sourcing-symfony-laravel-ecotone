@@ -32,7 +32,7 @@ class UnassignedTicketsProjection
     public function getUnassignedTickets() : array
     {
         return $this->connection->executeQuery(<<<SQL
-    SELECT * FROM unassigned_tickets ORDER BY prepared_at DESC
+    SELECT * FROM unassigned_tickets
 SQL)->fetchAllAssociative();
     }
 

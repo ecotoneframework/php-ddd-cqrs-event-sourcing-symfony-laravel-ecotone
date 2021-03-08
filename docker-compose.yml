@@ -8,8 +8,6 @@ services:
     working_dir: "/data/app"
     networks:
       - default
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     environment:
       APP_ENV: "dev"
       APP_INSTALL_DEPENDENCIES: "yes"
@@ -26,8 +24,6 @@ services:
     user: 1000:1000
     networks:
       - default
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     restart: always
     environment:
       APP_ENV: "dev"
@@ -43,8 +39,6 @@ services:
     user: 1000:1000
     networks:
       - default
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     restart: always
     environment:
       APP_ENV: "dev"

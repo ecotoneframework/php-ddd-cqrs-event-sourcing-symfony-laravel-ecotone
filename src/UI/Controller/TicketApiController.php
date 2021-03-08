@@ -3,9 +3,8 @@
 namespace App\UI\Controller;
 
 use App\Domain\Ticket\Command\AssignTicket;
-use App\Domain\Ticket\Command\CancelTicket;
-use App\Domain\Ticket\Command\PrepareTicket;
 use App\Domain\Ticket\Command\ReleaseTicket;
+use App\Domain\Ticket\Ticket;
 use Ecotone\Modelling\CommandBus;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,40 +20,28 @@ class TicketApiController
         $this->commandBus = $commandBus;
     }
 
-    #[Route("/tickets", methods:["POST"])]
-    public function prepare(Request $request) : Response
+    #[Route("/tickets", methods: ["POST"])]
+    public function prepare(Request $request): Response
     {
-        $this->commandBus->send(new PrepareTicket(
-            $request->get("ticketType"),
-            $request->get("description")
-        ));
+        $this->commandBus->sendWithRouting(Ticket::PREPARE_TICKET_TICKET, $request->request->all());
 
         return new RedirectResponse("/");
     }
 
-    #[Route("/tickets/{ticketId}/cancel", methods:["POST"])]
-    public function cancel(Request $request) : Response
+    #[Route("/tickets/{ticketId}/cancel", methods: ["POST"])]
+    public function cancel(Request $request): Response
     {
         $ticketId = $request->get("ticketId");
-        $this->commandBus->send(new CancelTicket($ticketId));
+        $this->commandBus->sendWithRouting(Ticket::CANCEL_TICKET, ["ticketId" => $ticketId]);
 
         return new RedirectResponse("/tickets/" . $ticketId);
     }
 
-    #[Route("/tickets/{ticketId}/assign", methods:["POST"])]
-    public function assign(Request $request) : Response
+    #[Route("/tickets/{ticketId}/assign", methods: ["POST"])]
+    public function assign(Request $request): Response
     {
         $ticketId = $request->get("ticketId");
-        $this->commandBus->send(new AssignTicket($ticketId, $request->get("assignTo")));
-
-        return new RedirectResponse("/tickets/" . $ticketId);
-    }
-
-    #[Route("/tickets/{ticketId}/release-assignation", methods:["POST"])]
-    public function releaseAssignation(Request $request) : Response
-    {
-        $ticketId = $request->get("ticketId");
-        $this->commandBus->send(new ReleaseTicket($ticketId));
+        $this->commandBus->sendWithRouting(Ticket::ASSIGN_TICKET, array_merge(["ticketId" => $ticketId], $request->request->all()));
 
         return new RedirectResponse("/tickets/" . $ticketId);
     }

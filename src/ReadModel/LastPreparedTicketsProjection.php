@@ -69,7 +69,7 @@ SQL)->fetchAllAssociative();
     #[EventHandler]
     public function onTicketWasAssigned(TicketWasAssigned $event) : void
     {
-        $this->connection->update(self::TABLE_NAME, ["status" => "assigned"], ["ticket_id" => $event->getTicketId()]);
+        $this->connection->update(self::TABLE_NAME, ["status" => "assigned", "assigned_to" => $event->getAssignedTo()], ["ticket_id" => $event->getTicketId()]);
     }
 
     #[ProjectionInitialization]

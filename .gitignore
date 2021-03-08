@@ -10,3 +10,4 @@
 ###< symfony/framework-bundle ###
 composer.lock
 cache
+.idea

@@ -9,7 +9,6 @@
                 <th>Ticket Type</th>
                 <th>Status</th>
                 <th>Assigned To</th>
-                <th>Prepared At</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -19,7 +18,6 @@
                     <td>{{ ticket.ticket_type }}</td>
                     <td>{{ ticket.status }}</td>
                     <td>{{ ticket.assigned_to }}</td>
-                    <td>{{ ticket.prepared_at }}</td>
                     <td>
                         <a href="/tickets/{{ ticket.ticket_id }}" class="btn btn-info" role="button">Details</a>
                         {% if ticket.status != 'cancelled' %}
