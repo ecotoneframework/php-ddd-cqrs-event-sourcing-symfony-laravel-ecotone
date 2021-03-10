@@ -1,4 +1,5 @@
 {
+    "name": "ecotone-examples/php-ddd-cqrs-event-sourcing-ecotone",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",
