@@ -2,7 +2,7 @@
 
 ![alt text](ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "PHP Application using DDD CQRS Event Sourcing with Hexagonal Architecture")
 
-Application built with [Ecotone Framework](https://docs.ecotone.tech) and powered by integrations 
+Application built with [Ecotone Framework](https://github.com/ecotoneframework/ecotone) and powered by integrations 
 with [Prooph Event Store](http://getprooph.org/), [Symfony](http://symfony.com/) and [JMS Serializer](https://github.com/schmittjoh/serializer).  
 
 Application shows the how complex systems can be built with ease using PHP.      
