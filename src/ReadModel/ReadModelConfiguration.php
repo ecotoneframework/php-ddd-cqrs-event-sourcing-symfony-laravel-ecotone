@@ -2,20 +2,19 @@
 
 namespace App\ReadModel;
 
+use Ecotone\Dbal\DbalBackedMessageChannelBuilder;
 use Ecotone\EventSourcing\ProjectionRunningConfiguration;
 use Ecotone\Messaging\Attribute\ServiceContext;
 
 class ReadModelConfiguration
 {
-    const LAST_PREPARED_TICKETS = "last_prepared_tickets";
-    const UNASSIGNED_TICKETS = "unassigned_tickets";
+    const ASYNCHRONOUS_PROJECTIONS_CHANNEL = "asynchronous_projections";
 
     #[ServiceContext]
     public function getConfiguration()
     {
         return [
-            ProjectionRunningConfiguration::createPolling(self::LAST_PREPARED_TICKETS),
-            ProjectionRunningConfiguration::createPolling(self::UNASSIGNED_TICKETS)
+            DbalBackedMessageChannelBuilder::create(self::ASYNCHRONOUS_PROJECTIONS_CHANNEL)
         ];
     }
 }

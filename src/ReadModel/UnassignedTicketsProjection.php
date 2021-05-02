@@ -7,15 +7,18 @@ use App\Domain\Ticket\Event\TicketWasCancelled;
 use App\Domain\Ticket\Event\TicketWasPrepared;
 use App\Domain\Ticket\Ticket;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception\TableNotFoundException;
 use Ecotone\EventSourcing\Attribute\Projection;
 use Ecotone\EventSourcing\Attribute\ProjectionInitialization;
 use Ecotone\EventSourcing\Attribute\ProjectionReset;
+use Ecotone\Messaging\Attribute\Asynchronous;
 use Ecotone\Messaging\Attribute\Parameter\Header;
 use Ecotone\Messaging\MessageHeaders;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ecotone\Modelling\Attribute\QueryHandler;
 
-#[Projection(ReadModelConfiguration::UNASSIGNED_TICKETS, Ticket::class)]
+#[Asynchronous(ReadModelConfiguration::ASYNCHRONOUS_PROJECTIONS_CHANNEL)]
+#[Projection("unassigned_tickets", Ticket::class)]
 class UnassignedTicketsProjection
 {
     const TABLE_NAME = "unassigned_tickets";
@@ -31,12 +34,17 @@ class UnassignedTicketsProjection
     #[QueryHandler(self::GET_UNASSIGED_TICKETS)]
     public function getUnassignedTickets() : array
     {
-        return $this->connection->executeQuery(<<<SQL
+        try {
+            return $this->connection->executeQuery(<<<SQL
     SELECT * FROM unassigned_tickets
-SQL)->fetchAllAssociative();
+SQL
+            )->fetchAllAssociative();
+        }catch (TableNotFoundException) {
+            return [];
+        }
     }
 
-    #[EventHandler]
+    #[EventHandler(endpointId:"UnassignedTicketsProjection::onTicketWasPreperad")]
     public function onTicketWasPreperad(TicketWasPrepared $event) : void
     {
         $this->connection->insert(self::TABLE_NAME, [
@@ -46,13 +54,13 @@ SQL)->fetchAllAssociative();
         ]);
     }
 
-    #[EventHandler]
+    #[EventHandler(endpointId:"UnassignedTicketsProjection::onTicketWasCancelled")]
     public function onTicketWasCancelled(TicketWasCancelled $event) : void
     {
         $this->connection->delete(self::TABLE_NAME, ["ticket_id" => $event->getTicketId()]);
     }
 
-    #[EventHandler]
+    #[EventHandler(endpointId:"UnassignedTicketsProjection::onTicketWasAssigned")]
     public function onTicketWasAssigned(TicketWasAssigned $event) : void
     {
         $this->connection->delete(self::TABLE_NAME, ["ticket_id" => $event->getTicketId()]);

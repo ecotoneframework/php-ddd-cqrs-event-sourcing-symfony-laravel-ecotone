@@ -7,6 +7,7 @@ use App\Domain\Ticket\Event\TicketWasCancelled;
 use App\Domain\Ticket\Event\TicketWasPrepared;
 use App\Domain\Ticket\Ticket;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception\TableNotFoundException;
 use Ecotone\EventSourcing\Attribute\Projection;
 use Ecotone\EventSourcing\Attribute\ProjectionInitialization;
 use Ecotone\EventSourcing\Attribute\ProjectionReset;
@@ -17,7 +18,8 @@ use Ecotone\Messaging\MessageHeaders;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ecotone\Modelling\Attribute\QueryHandler;
 
-#[Projection(ReadModelConfiguration::LAST_PREPARED_TICKETS, Ticket::class)]
+#[Asynchronous(ReadModelConfiguration::ASYNCHRONOUS_PROJECTIONS_CHANNEL)]
+#[Projection("last_prepared_tickets", Ticket::class)]
 class LastPreparedTicketsProjection
 {
     const TABLE_NAME = "last_prepared_tickets";
@@ -44,13 +46,18 @@ SQL, ["ticket_id" => $ticketId])->fetchAllAssociative()[0]
     #[QueryHandler(self::GET_PREPARED_TICKETS)]
     public function getPreparedTickets() : array
     {
-        return $this->connection->executeQuery(<<<SQL
+        try {
+            return $this->connection->executeQuery(<<<SQL
     SELECT * FROM last_prepared_tickets ORDER BY prepared_at DESC
-SQL)->fetchAllAssociative();
+SQL
+            )->fetchAllAssociative();
+        }catch (TableNotFoundException) {
+            return [];
+        }
     }
 
-    #[EventHandler]
-    public function onTicketWasPreperad(TicketWasPrepared $event, #[Header(MessageHeaders::TIMESTAMP)] $occurredOn) : void
+    #[EventHandler(endpointId:"LastPreparedTicketsProjection::onTicketWasPreperad")]
+    public function onTicketWasPrepared(TicketWasPrepared $event, #[Header(MessageHeaders::TIMESTAMP)] $occurredOn) : void
     {
         $this->connection->insert(self::TABLE_NAME, [
             "ticket_id" => $event->getTicketId(),
@@ -61,13 +68,13 @@ SQL)->fetchAllAssociative();
         ]);
     }
 
-    #[EventHandler]
+    #[EventHandler(endpointId:"LastPreparedTicketsProjection::onTicketWasCancelled")]
     public function onTicketWasCancelled(TicketWasCancelled $event) : void
     {
         $this->connection->update(self::TABLE_NAME, ["status" => "cancelled"], ["ticket_id" => $event->getTicketId()]);
     }
 
-    #[EventHandler]
+    #[EventHandler(endpointId:"LastPreparedTicketsProjection::onTicketWasAssigned")]
     public function onTicketWasAssigned(TicketWasAssigned $event) : void
     {
         $this->connection->update(self::TABLE_NAME, ["status" => "assigned", "assigned_to" => $event->getAssignedTo()], ["ticket_id" => $event->getTicketId()]);
