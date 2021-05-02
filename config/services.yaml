@@ -30,12 +30,11 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    Enqueue\Dbal\DbalConnectionFactory:
-        class: Enqueue\Dbal\DbalConnectionFactory
-        arguments:
-            - "%env(resolve:DATABASE_DSN)%"
-
     Doctrine\DBAL\Connection:
-        class: Doctrine\DBAL\Connection
-        factory: ['Ecotone\Dbal\DbalConnection', 'getConnection']
-        arguments: ["@Enqueue\\Dbal\\DbalConnectionFactory"]
+        factory: ["Doctrine\\DBAL\\DriverManager","getConnection"]
+        arguments:
+            - url: "%env(resolve:DATABASE_DSN)%"
+
+    Enqueue\Dbal\DbalConnectionFactory:
+        factory: ['Ecotone\Dbal\DbalConnection', 'create']
+        arguments: ["@Doctrine\\DBAL\\Connection"]

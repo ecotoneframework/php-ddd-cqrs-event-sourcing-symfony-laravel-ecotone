@@ -15,7 +15,7 @@ use Ecotone\Messaging\MessageHeaders;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ecotone\Modelling\Attribute\QueryHandler;
 
-#[Projection("unassigned_tickets", Ticket::class)]
+#[Projection(ReadModelConfiguration::UNASSIGNED_TICKETS, Ticket::class)]
 class UnassignedTicketsProjection
 {
     const TABLE_NAME = "unassigned_tickets";

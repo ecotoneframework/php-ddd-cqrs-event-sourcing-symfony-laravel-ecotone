@@ -11,12 +11,13 @@ use Ecotone\EventSourcing\Attribute\Projection;
 use Ecotone\EventSourcing\Attribute\ProjectionInitialization;
 use Ecotone\EventSourcing\Attribute\ProjectionReset;
 use Ecotone\EventSourcing\EventStore;
+use Ecotone\Messaging\Attribute\Asynchronous;
 use Ecotone\Messaging\Attribute\Parameter\Header;
 use Ecotone\Messaging\MessageHeaders;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ecotone\Modelling\Attribute\QueryHandler;
 
-#[Projection("last_prepared_tickets", Ticket::class)]
+#[Projection(ReadModelConfiguration::LAST_PREPARED_TICKETS, Ticket::class)]
 class LastPreparedTicketsProjection
 {
     const TABLE_NAME = "last_prepared_tickets";

@@ -10,12 +10,13 @@ use App\Domain\Ticket\Event\TicketWasPrepared;
 use Ecotone\Modelling\Attribute\AggregateFactory;
 use Ecotone\Modelling\Attribute\AggregateIdentifier;
 use Ecotone\Modelling\Attribute\CommandHandler;
-use Ecotone\Modelling\Attribute\EventSourcedAggregate;
+use Ecotone\Modelling\Attribute\EventSourcingAggregate;
+use Ecotone\Modelling\Attribute\EventSourcingHandler;
 use Ecotone\Modelling\WithAggregateVersioning;
 use InvalidArgumentException;
 use Ramsey\Uuid\Uuid;
 
-#[EventSourcedAggregate]
+#[EventSourcingAggregate]
 class Ticket
 {
     const PREPARE_TICKET_TICKET = "ticket.prepareTicket";
@@ -28,10 +29,6 @@ class Ticket
     private string $ticketId;
     private bool $isCancelled;
     private bool $isAssigned;
-
-    private function __construct()
-    {
-    }
 
     #[CommandHandler(self::PREPARE_TICKET_TICKET)]
     public static function prepare(PrepareTicket $command): array
@@ -62,43 +59,23 @@ class Ticket
         return [new TicketWasAssigned($this->ticketId, $command->getAssignedTo())];
     }
 
-    #[AggregateFactory]
-    public static function rebuild(
-        array $events
-    ): static
+    #[EventSourcingHandler]
+    public function applyTicketWasPrepared(TicketWasPrepared $event): void
     {
-        $ticket = new static();
-        foreach ($events as $event) {
-            $ticket = match (get_class($event)) {
-                TicketWasPrepared::class => $ticket->applyTicketWasPrepared($event, $ticket),
-                TicketWasCancelled::class => $ticket->applyTicketWasCancelled($event, $ticket),
-                TicketWasAssigned::class => $ticket->applyTicketWasAssigned($event, $ticket)
-            };
-        }
-
-        return $ticket;
+        $this->ticketId    = $event->getTicketId();
+        $this->isCancelled = false;
+        $this->isAssigned  = false;
     }
 
-    private function applyTicketWasPrepared(TicketWasPrepared $event, self $ticket): static
+    #[EventSourcingHandler]
+    public function applyTicketWasCancelled(TicketWasCancelled $event): void
     {
-        $ticket->ticketId    = $event->getTicketId();
-        $ticket->isCancelled = false;
-        $ticket->isAssigned  = false;
-
-        return $ticket;
+        $this->isCancelled = true;
     }
 
-    private function applyTicketWasCancelled(TicketWasCancelled $event, self $ticket): static
+    #[EventSourcingHandler]
+    public function applyTicketWasAssigned(TicketWasAssigned $event): void
     {
-        $ticket->isCancelled = true;
-
-        return $ticket;
-    }
-
-    private function applyTicketWasAssigned(TicketWasAssigned $event, self $ticket): static
-    {
-        $ticket->isAssigned = true;
-
-        return $ticket;
+        $this->isAssigned = true;
     }
 }
