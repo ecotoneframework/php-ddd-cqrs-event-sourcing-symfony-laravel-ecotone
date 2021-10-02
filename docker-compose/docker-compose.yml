@@ -4,7 +4,7 @@ services:
   web-service:
     build: .
     volumes:
-      - "$PWD:/data/app"
+      - "$PWD/..:/data/app"
     working_dir: "/data/app"
     networks:
       - default
@@ -19,7 +19,7 @@ services:
   projections:
     build: .
     volumes:
-      - "$PWD:/data/app"
+      - "$PWD/..:/data/app"
     working_dir: "/data/app"
     user: 1000:1000
     networks:
