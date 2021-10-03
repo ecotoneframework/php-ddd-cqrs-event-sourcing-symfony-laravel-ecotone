@@ -1,0 +1,29 @@
+apiVersion: skaffold/v2beta10
+kind: Config
+build:
+  artifacts:
+    - image: localhost:5000/apps/demo
+      buildpacks:
+        builder: paketobuildpacks/builder:full
+        env:
+          - APP_ENV=dev
+          - APP_DEBUG=true
+          - DATABASE_DSN=pgsql://ecotone:secret@database:5432/ecotone
+#          - BPE_DEFAULT_APP_ENV=dev
+#          - BPE_APP_DEBUG=true
+        dependencies:
+          paths:
+            - composer.json
+            - .php.ini.d
+            - buildpack.yml
+            - .profile
+      sync:
+        manual:
+          - src: "src/**/*"
+            dest: src
+          - src: "public/*.php"
+            dest: public
+deploy:
+  kubectl:
+    manifests:
+      - "kubernetes/*.yaml"

@@ -1,0 +1,19 @@
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: consumer-deployment
+#spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: consumer-label
+#  template:
+#    metadata:
+#      labels:
+#        app: consumer-label
+#    spec:
+#      containers:
+#      - image: localhost:5000/apps/demo
+#        name: consumer
+#        command: ["/data/app/bin/console"]
+#        args: ["ecotone:run","asynchronous_projections","-vvv"]

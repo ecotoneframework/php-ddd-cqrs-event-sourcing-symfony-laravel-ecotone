@@ -10,6 +10,7 @@ services:
       - default
     environment:
       APP_ENV: "dev"
+      APP_DEBUG: "true"
       APP_INSTALL_DEPENDENCIES: "yes"
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999

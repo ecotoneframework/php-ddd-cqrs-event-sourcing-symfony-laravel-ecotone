@@ -158,9 +158,6 @@
     "symfony/deprecation-contracts": {
         "version": "v2.2.0"
     },
-    "symfony/dotenv": {
-        "version": "v5.2.4"
-    },
     "symfony/error-handler": {
         "version": "v5.2.4"
     },
