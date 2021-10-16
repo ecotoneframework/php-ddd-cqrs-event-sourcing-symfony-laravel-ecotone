@@ -15,6 +15,7 @@ build:
           paths:
             - composer.json
             - .php.ini.d
+            - .nginx.conf.d
             - buildpack.yml
             - .profile
       sync:

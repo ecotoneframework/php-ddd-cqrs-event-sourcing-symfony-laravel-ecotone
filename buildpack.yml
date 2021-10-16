@@ -1,4 +1,4 @@
 php:
   webserver: nginx
   webdirectory: public
-  script: .profile
+  script: index.php
