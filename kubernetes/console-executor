@@ -1,0 +1,4 @@
+#!/usr/bin/env /bin/bash
+echo 'PATH="/layers/paketo-buildpacks_php-dist/php/bin:$PATH"' >> /workspace/path
+source /workspace/path
+exec "$@"

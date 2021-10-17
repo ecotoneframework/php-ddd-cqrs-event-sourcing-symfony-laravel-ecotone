@@ -1,19 +1,28 @@
-#apiVersion: apps/v1
-#kind: Deployment
-#metadata:
-#  name: consumer-deployment
-#spec:
-#  replicas: 1
-#  selector:
-#    matchLabels:
-#      app: consumer-label
-#  template:
-#    metadata:
-#      labels:
-#        app: consumer-label
-#    spec:
-#      containers:
-#      - image: localhost:5000/apps/demo
-#        name: consumer
-#        command: ["/data/app/bin/console"]
-#        args: ["ecotone:run","asynchronous_projections","-vvv"]
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer-label
+  template:
+    metadata:
+      labels:
+        app: consumer-label
+    spec:
+      containers:
+      - image: localhost:5000/apps/demo
+        name: consumer
+        command: ["/workspace/kubernetes/console-executor"]
+        args: ["/workspace/bin/console", ecotone:run","asynchronous_projections","-vvv"]
+        env:
+          - name: PORT
+            value: "3000"
+          - name: APP_ENV
+            value: "dev"
+          - name: APP_DEBUG
+            value: "true"
+          - name: DATABASE_DSN
+            value: "pgsql://ecotone:secret@database:5432/ecotone"
