@@ -12,8 +12,6 @@ build:
             dest: src
           - src: 'public/**/*'
             dest: public
-#        infer:
-#          - '**/*.php'
 deploy:
   kubectl:
     manifests:
