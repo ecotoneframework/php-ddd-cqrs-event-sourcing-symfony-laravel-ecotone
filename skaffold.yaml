@@ -16,3 +16,8 @@ deploy:
   kubectl:
     manifests:
       - "kubernetes/*.yaml"
+portForward:
+  - resourceType: service
+    resourceName: web-server-service
+    port: 80
+    localPort: 3000

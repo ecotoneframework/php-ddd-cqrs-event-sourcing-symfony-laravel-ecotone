@@ -17,7 +17,7 @@ spec:
         name: web-server
         env:
         - name: PORT
-          value: "3000"
+          value: "80"
         - name: APP_ENV
           value: "dev"
         - name: APP_DEBUG
@@ -25,7 +25,7 @@ spec:
         - name: DATABASE_DSN
           value: "pgsql://ecotone:secret@database:5432/ecotone"
         ports:
-        - containerPort: 3000
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -38,4 +38,4 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 3000
+    targetPort: 80
