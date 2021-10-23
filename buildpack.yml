@@ -1,4 +1,0 @@
-php:
-  webserver: nginx
-  webdirectory: public
-  script: index.php

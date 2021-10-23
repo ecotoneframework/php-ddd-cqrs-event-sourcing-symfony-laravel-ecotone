@@ -15,8 +15,7 @@ spec:
       containers:
       - image: localhost:5000/apps/demo
         name: consumer
-        command: ["/workspace/kubernetes/console-executor"]
-        args: ["/workspace/bin/console", ecotone:run","asynchronous_projections","-vvv"]
+        args: ["/data/app/bin/console", "ecotone:run","asynchronous_projections","-vvv"]
         env:
           - name: PORT
             value: "3000"

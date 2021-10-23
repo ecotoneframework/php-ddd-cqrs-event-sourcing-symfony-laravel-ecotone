@@ -3,26 +3,17 @@ kind: Config
 build:
   artifacts:
     - image: localhost:5000/apps/demo
-      buildpacks:
-        builder: paketobuildpacks/builder:full
-
-        env:
-          - APP_ENV=dev
-          - APP_DEBUG=true
-          - DATABASE_DSN=pgsql://ecotone:secret@database:5432/ecotone
-        dependencies:
-          paths:
-            - composer.json
-            - .php.ini.d
-            - .nginx.conf.d
-            - buildpack.yml
-            - .profile
+      context: .
+      docker:
+        dockerfile: Dockerfile
       sync:
         manual:
-          - src: "src/**/*"
+          - src: 'src/**/*.php'
             dest: src
-          - src: "public/*.php"
+          - src: 'public/**/*'
             dest: public
+#        infer:
+#          - '**/*.php'
 deploy:
   kubectl:
     manifests:

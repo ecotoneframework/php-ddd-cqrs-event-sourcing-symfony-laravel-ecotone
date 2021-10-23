@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web-service:
-    build: ../
+    build: .
     volumes:
       - "$PWD:/data/app"
     working_dir: "/data/app"
@@ -11,9 +11,6 @@ services:
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      APP_INSTALL_DEPENDENCIES: "yes"
-      COMPOSER_HOME: /data/app
-      COMPOSE_HTTP_TIMEOUT: 9999
       DATABASE_DSN: pgsql://ecotone:secret@database:5432/ecotone
     ports:
       - 3000:80
