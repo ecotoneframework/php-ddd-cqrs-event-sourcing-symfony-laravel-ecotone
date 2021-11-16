@@ -7,13 +7,6 @@ The example using CQRS DDD and Event Sourcing backed by [Prooph](http://getproop
 
 Have fun :)
 
-# Run on local Kubernetes Cluster
-
-As you can see `kubernetes` catalog, there are only k8s manifest. There is no DockerFile. 
-This comes from the fact, that is sample project is using [paketo buildpacks](https://paketo.io). 
-Locally we are deploying to the cluster using [skaffold](https://skaffold.dev/). 
-If you want to get more information on how it everything play together visit the [blog post](https://blog.ecotone.tech).
-
 # Run using docker-compose
 
 ```php 
@@ -21,6 +14,20 @@ cd docker-compose && docker-compose up -d
 ```
 And then application is available under `localhost:3000`  
 As read model is updated asynchronously, you may need to refresh after performing action to see the changes.
+
+# Run on local Kubernetes
+
+In order to set up local cluster with ease follow the [instructions from here](https://github.com/dgafka/local-kuberentes-cluster-over-https).
+And install [skaffold](https://skaffold.dev/) for automatic code synchronization to your Kubernetes.
+You will be able to modify the code and see the changes instantly on same deployment. 
+
+```php
+Add to your hosts file (/etc/hosts) ecotone.local.dev for your docker ip address (127.0.0.1 for linux)
+Run `skaffold dev --tail`
+Enter `https://ecotone.local.dev` and enjoy the application :)  
+```
+
+If you want to get more information on how it everything play together visit the [blog post](https://blog.ecotone.tech).
 
 # Possible Integrations with Laravel and Ecotone Lite
 

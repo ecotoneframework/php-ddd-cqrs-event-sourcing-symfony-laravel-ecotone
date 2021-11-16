@@ -3,3 +3,6 @@ var/log/*
 cache
 .idea
 .git
+README.md
+.gitignore
+documentation
