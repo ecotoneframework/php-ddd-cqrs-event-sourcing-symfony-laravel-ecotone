@@ -9,9 +9,9 @@ build:
       sync:
         manual:
           - src: 'src/**/*.php'
-            dest: src
+            dest: .
           - src: 'public/**/*'
-            dest: public
+            dest: .
 deploy:
   kubectl:
     manifests:
