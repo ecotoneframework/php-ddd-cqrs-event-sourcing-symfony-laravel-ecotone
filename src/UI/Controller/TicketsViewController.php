@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TicketViewController extends AbstractController
+class TicketsViewController extends AbstractController
 {
     private QueryBus $queryBus;
 
@@ -19,7 +19,7 @@ class TicketViewController extends AbstractController
         $this->queryBus = $queryBus;
     }
 
-    #[Route("/")]
+    #[Route("/prepared-tickets")]
     public function lastPreparedTickets() : Response
     {
         return $this->render("last_prepared_tickets.html.twig",[

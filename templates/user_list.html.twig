@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Users</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Is active</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.isActive ? 'yes' : 'no' }}</td>
+                    <td>
+                        {% if user.isActive %}
+                            <form action="/users/{{ user.userId }}/deactivate" method="post"><button class="btn btn-danger" type="submit">Deactivate</button></form>
+                        {% else %}
+                            <form action="/users/{{ user.userId }}/activate" method="post"><button class="btn btn-success" type="submit">Activate</button></form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

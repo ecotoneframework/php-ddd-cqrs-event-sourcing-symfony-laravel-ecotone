@@ -33,6 +33,8 @@ services:
     image: postgres:12.1
     networks:
       - default
+    ports:
+      - 3001:5432
     environment:
       POSTGRES_USER: "ecotone"
       POSTGRES_PASSWORD: "secret"

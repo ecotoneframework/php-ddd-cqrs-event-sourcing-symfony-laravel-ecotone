@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form action="/users" method="post">
+        <div class="row g-3">
+            <div class="col-sm-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Johny" value="" required>
+            </div>
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Register</button>
+        </div>
+    </form>
+{% endblock %}
