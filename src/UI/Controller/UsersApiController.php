@@ -16,7 +16,16 @@ class UsersApiController
     #[Route("/users", methods: ["POST"])]
     public function register(Request $request): Response
     {
-        $this->userService->register($request->get("name"));
+        $this->userService->registerUser($request->get("name"));
+
+        return new RedirectResponse("/");
+    }
+
+    #[Route("/users/{id}/activate", methods: ["PUT"])]
+    public function activate(Request $request): Response
+    {
+        $id = $request->get("id");
+        $this->userService->activateUser($id);
 
         return new RedirectResponse("/");
     }

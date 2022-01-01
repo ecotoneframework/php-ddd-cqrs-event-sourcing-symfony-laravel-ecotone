@@ -690,16 +690,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "2.5.3",
+            "version": "2.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "f6cbf1816691bd2632407f6f34cf5db24fc2e411"
+                "reference": "f6191c50600bad1c0195638413f53aee6158b909"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/f6cbf1816691bd2632407f6f34cf5db24fc2e411",
-                "reference": "f6cbf1816691bd2632407f6f34cf5db24fc2e411",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/f6191c50600bad1c0195638413f53aee6158b909",
+                "reference": "f6191c50600bad1c0195638413f53aee6158b909",
                 "shasum": ""
             },
             "require": {
@@ -783,7 +783,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.5.3"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.5.4"
             },
             "funding": [
                 {
@@ -799,7 +799,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-29T08:13:45+00:00"
+            "time": "2021-12-30T18:43:28+00:00"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -1566,20 +1566,20 @@
         },
         {
             "name": "ecotone/dbal",
-            "version": "1.7.5",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/dbal.git",
-                "reference": "ecdde082ffe06b77a3022b3a531fa43adc20c26e"
+                "reference": "01b4fa6bac9226447aa76693a594e10d8f87313c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/dbal/zipball/ecdde082ffe06b77a3022b3a531fa43adc20c26e",
-                "reference": "ecdde082ffe06b77a3022b3a531fa43adc20c26e",
+                "url": "https://api.github.com/repos/ecotoneframework/dbal/zipball/01b4fa6bac9226447aa76693a594e10d8f87313c",
+                "reference": "01b4fa6bac9226447aa76693a594e10d8f87313c",
                 "shasum": ""
             },
             "require": {
-                "ecotone/enqueue": "~1.7.5",
+                "ecotone/enqueue": "~1.8.0",
                 "enqueue/dbal": "^0.10.0"
             },
             "require-dev": {
@@ -1594,7 +1594,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.5-dev"
+                    "dev-master": "1.8.0-dev"
                 }
             },
             "autoload": {
@@ -1619,7 +1619,7 @@
                 "ecotone"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/dbal/tree/1.7.5"
+                "source": "https://github.com/ecotoneframework/dbal/tree/1.8.0"
             },
             "funding": [
                 {
@@ -1631,20 +1631,20 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T13:44:19+00:00"
+            "time": "2022-01-01T10:45:34+00:00"
         },
         {
             "name": "ecotone/ecotone",
-            "version": "1.7.5",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/ecotone.git",
-                "reference": "cc88ce96316ca6d6286eff8aabd0be756a4a51e6"
+                "reference": "769dffcce7c7378272757d537859873342370bd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/cc88ce96316ca6d6286eff8aabd0be756a4a51e6",
-                "reference": "cc88ce96316ca6d6286eff8aabd0be756a4a51e6",
+                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/769dffcce7c7378272757d537859873342370bd4",
+                "reference": "769dffcce7c7378272757d537859873342370bd4",
                 "shasum": ""
             },
             "require": {
@@ -1663,7 +1663,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.5-dev"
+                    "dev-master": "1.8.0-dev"
                 }
             },
             "autoload": {
@@ -1692,7 +1692,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ecotoneframework/ecotone/issues",
-                "source": "https://github.com/ecotoneframework/ecotone/tree/1.7.5"
+                "source": "https://github.com/ecotoneframework/ecotone/tree/1.8.0"
             },
             "funding": [
                 {
@@ -1704,24 +1704,24 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T13:44:14+00:00"
+            "time": "2022-01-01T10:45:28+00:00"
         },
         {
             "name": "ecotone/enqueue",
-            "version": "1.7.5",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/enqueue.git",
-                "reference": "3bd9e712a57aad76c6791c24ed9fe2a3872b1e37"
+                "reference": "b74f2824a4853d798ddd7137df8e1f6943a7601f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/3bd9e712a57aad76c6791c24ed9fe2a3872b1e37",
-                "reference": "3bd9e712a57aad76c6791c24ed9fe2a3872b1e37",
+                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/b74f2824a4853d798ddd7137df8e1f6943a7601f",
+                "reference": "b74f2824a4853d798ddd7137df8e1f6943a7601f",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.7.5",
+                "ecotone/ecotone": "~1.8.0",
                 "enqueue/dsn": "*",
                 "queue-interop/queue-interop": "*"
             },
@@ -1734,7 +1734,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.5-dev"
+                    "dev-master": "1.8.0-dev"
                 }
             },
             "autoload": {
@@ -1759,7 +1759,7 @@
                 "enqueue"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/enqueue/tree/1.7.5"
+                "source": "https://github.com/ecotoneframework/enqueue/tree/1.8.0"
             },
             "funding": [
                 {
@@ -1771,25 +1771,25 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T13:44:20+00:00"
+            "time": "2022-01-01T10:45:36+00:00"
         },
         {
             "name": "ecotone/jms-converter",
-            "version": "1.7.5",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/jms-converter.git",
-                "reference": "8225bb588470eec66d9f97eb8deb5fb457e9c0f8"
+                "reference": "016a9d34f652f00ee52bd32f99df3bc99f8b30d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/8225bb588470eec66d9f97eb8deb5fb457e9c0f8",
-                "reference": "8225bb588470eec66d9f97eb8deb5fb457e9c0f8",
+                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/016a9d34f652f00ee52bd32f99df3bc99f8b30d0",
+                "reference": "016a9d34f652f00ee52bd32f99df3bc99f8b30d0",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": ">=1.10",
-                "ecotone/ecotone": "~1.7.5",
+                "ecotone/ecotone": "~1.8.0",
                 "jms/serializer": ">=3.11"
             },
             "require-dev": {
@@ -1800,7 +1800,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.5-dev"
+                    "dev-master": "1.8.0-dev"
                 }
             },
             "autoload": {
@@ -1830,7 +1830,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.7.5"
+                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.8.0"
             },
             "funding": [
                 {
@@ -1842,24 +1842,24 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T13:44:24+00:00"
+            "time": "2022-01-01T10:45:40+00:00"
         },
         {
             "name": "ecotone/pdo-event-sourcing",
-            "version": "1.7.5",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/event-sourcing.git",
-                "reference": "ae52c240181134b7f2969f6b58c67fdd47535b3e"
+                "reference": "0b42cdac5046257a1aacde828f0420ac28e916da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/event-sourcing/zipball/ae52c240181134b7f2969f6b58c67fdd47535b3e",
-                "reference": "ae52c240181134b7f2969f6b58c67fdd47535b3e",
+                "url": "https://api.github.com/repos/ecotoneframework/event-sourcing/zipball/0b42cdac5046257a1aacde828f0420ac28e916da",
+                "reference": "0b42cdac5046257a1aacde828f0420ac28e916da",
                 "shasum": ""
             },
             "require": {
-                "ecotone/dbal": "~1.7.5",
+                "ecotone/dbal": "~1.8.0",
                 "prooph/pdo-event-store": "^1.13"
             },
             "require-dev": {
@@ -1872,7 +1872,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.5-dev"
+                    "dev-master": "1.8.0-dev"
                 }
             },
             "autoload": {
@@ -1897,7 +1897,7 @@
                 "ecotone"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/event-sourcing/tree/1.7.5"
+                "source": "https://github.com/ecotoneframework/event-sourcing/tree/1.8.0"
             },
             "funding": [
                 {
@@ -1909,24 +1909,24 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T13:44:23+00:00"
+            "time": "2022-01-01T10:45:38+00:00"
         },
         {
             "name": "ecotone/symfony-bundle",
-            "version": "1.7.5",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/symfony.git",
-                "reference": "579a33bd750d2a2135e543039ac083199e00b741"
+                "reference": "fe629ae86e61233dbd54e2a782aefc4ec94415fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/symfony/zipball/579a33bd750d2a2135e543039ac083199e00b741",
-                "reference": "579a33bd750d2a2135e543039ac083199e00b741",
+                "url": "https://api.github.com/repos/ecotoneframework/symfony/zipball/fe629ae86e61233dbd54e2a782aefc4ec94415fd",
+                "reference": "fe629ae86e61233dbd54e2a782aefc4ec94415fd",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.7.5",
+                "ecotone/ecotone": "~1.8.0",
                 "laminas/laminas-zendframework-bridge": "^1.0.0",
                 "php": ">=8.0",
                 "symfony/console": ">=4.0",
@@ -1941,7 +1941,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.5-dev"
+                    "dev-master": "1.8.0-dev"
                 }
             },
             "autoload": {
@@ -1973,7 +1973,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/symfony/tree/1.7.5"
+                "source": "https://github.com/ecotoneframework/symfony/tree/1.8.0"
             },
             "funding": [
                 {
@@ -1985,7 +1985,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T13:44:28+00:00"
+            "time": "2022-01-01T10:45:45+00:00"
         },
         {
             "name": "enqueue/dbal",

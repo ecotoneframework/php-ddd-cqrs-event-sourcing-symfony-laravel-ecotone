@@ -32,6 +32,11 @@ class User
         return new static(Uuid::uuid4()->toString(), $name);
     }
 
+    public function getUserId(): string
+    {
+        return $this->userId;
+    }
+
     public function activate(): void
     {
         $this->isActive = true;
