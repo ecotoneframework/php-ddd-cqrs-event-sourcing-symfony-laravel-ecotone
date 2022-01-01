@@ -1,4 +1,4 @@
-# PHP Application using DDD CQRS Event Sourcing with Hexagonal Architecture
+# PHP Application using DDD CQRS Event Sourcing Symfony with Hexagonal Architecture
 
 ![alt text](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "PHP Application using DDD CQRS Event Sourcing Symfony with Hexagonal Architecture") 
 
