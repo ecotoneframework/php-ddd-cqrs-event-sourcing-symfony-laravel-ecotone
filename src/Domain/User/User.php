@@ -6,12 +6,17 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
+use Ecotone\Modelling\Attribute\Aggregate;
+use Ecotone\Modelling\Attribute\AggregateIdentifier;
+use Ecotone\Modelling\Attribute\CommandHandler;
 use Ramsey\Uuid\Uuid;
 
+#[Aggregate] // 1
 #[Entity]
 #[Table("users")]
 class User
 {
+    #[AggregateIdentifier] // 2
     #[Id]
     #[Column(type: "string")]
     private string $userId;
@@ -27,19 +32,21 @@ class User
         $this->isActive = false;
     }
 
+    #[CommandHandler("registerUser")] // 3
     public static function register(string $name): static
     {
         return new static(Uuid::uuid4()->toString(), $name);
     }
 
-    public function getUserId(): string
-    {
-        return $this->userId;
-    }
-
+    #[CommandHandler("activateUser")] // 3
     public function activate(): void
     {
         $this->isActive = true;
+    }
+
+    public function getUserId(): string
+    {
+        return $this->userId;
     }
 
     public function deactivate(): void

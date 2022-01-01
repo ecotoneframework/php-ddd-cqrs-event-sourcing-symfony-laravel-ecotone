@@ -27,7 +27,7 @@ class UsersApiController
     public function activate(Request $request): Response
     {
         $id = $request->get("id");
-        $this->commandBus->sendWithRouting("activateUser", $id);
+        $this->commandBus->sendWithRouting("activateUser", $id, metadata: ["aggregate.id" => $id]);
 
         return new RedirectResponse("/");
     }
