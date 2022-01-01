@@ -9,15 +9,13 @@ use Ecotone\Modelling\Attribute\CommandHandler;
 
 class UserService
 {
-    public function __construct(private EntityManagerInterface $entityManager, private EmailSender $emailSender) {}
+    public function __construct(private EntityManagerInterface $entityManager) {}
 
     #[CommandHandler("registerUser")]
     public function registerUser(string $name): void
     {
         $user = User::register($name);
         $this->entityManager->persist($user);
-
-        $this->emailSender->sendWelcomeEmailTo($user->getUserId());
     }
 
     #[CommandHandler("activateUser")]
