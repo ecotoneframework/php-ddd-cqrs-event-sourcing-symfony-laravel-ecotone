@@ -1,6 +1,6 @@
 # PHP Application using DDD CQRS Event Sourcing with Hexagonal Architecture
 
-![alt text](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "PHP Application using DDD CQRS Event Sourcing with Hexagonal Architecture") 
+![alt text](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "PHP Application using DDD CQRS Event Sourcing Symfony with Hexagonal Architecture") 
 
 Application shows the how complex systems can be built with ease using PHP.      
 The example using CQRS DDD and Event Sourcing backed by [Prooph](http://getprooph.org/) in [Symfony](http://symfony.com/) using [Ecotone Framework](https://github.com/ecotoneframework/ecotone).  
