@@ -5,46 +5,27 @@ namespace App\Application;
 use App\Domain\EmailSender;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Domain\User\User;
+use Ecotone\Modelling\Attribute\CommandHandler;
 
 class UserService
 {
     public function __construct(private EntityManagerInterface $entityManager, private EmailSender $emailSender) {}
 
+    #[CommandHandler("registerUser")]
     public function registerUser(string $name): void
     {
-        try {
-            $this->entityManager->beginTransaction();
+        $user = User::register($name);
+        $this->entityManager->persist($user);
 
-            $user = User::register($name);
-            $this->entityManager->persist($user);
-
-            $this->emailSender->sendWelcomeEmailTo($user->getUserId());
-
-            $this->entityManager->flush();
-            $this->entityManager->commit();
-        }catch (\Throwable $exception) {
-            $this->entityManager->rollback();
-
-            throw $exception;
-        }
+        $this->emailSender->sendWelcomeEmailTo($user->getUserId());
     }
 
+    #[CommandHandler("activateUser")]
     public function activateUser(string $id): void
     {
-        try {
-            $this->entityManager->beginTransaction();
-
-            /** @var User $user */
-            $user = $this->entityManager->find(User::class, $id);
-            $user->activate();
-            $this->entityManager->persist($user);
-
-            $this->entityManager->flush();
-            $this->entityManager->commit();
-        }catch (\Throwable $exception) {
-            $this->entityManager->rollback();
-
-            throw $exception;
-        }
+        /** @var User $user */
+        $user = $this->entityManager->find(User::class, $id);
+        $user->activate();
+        $this->entityManager->persist($user);
     }
 }
