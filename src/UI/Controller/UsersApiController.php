@@ -31,4 +31,13 @@ class UsersApiController
 
         return new RedirectResponse("/");
     }
+
+    #[Route("/users/{id}/deactivate", methods: ["POST"])]
+    public function deactivate(Request $request): Response
+    {
+        $id = $request->get("id");
+        $this->commandBus->sendWithRouting("deactivateUser", $id, metadata: ["aggregate.id" => $id]);
+
+        return new RedirectResponse("/");
+    }
 }

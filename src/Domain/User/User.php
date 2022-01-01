@@ -11,12 +11,12 @@ use Ecotone\Modelling\Attribute\AggregateIdentifier;
 use Ecotone\Modelling\Attribute\CommandHandler;
 use Ramsey\Uuid\Uuid;
 
-#[Aggregate] // 1
+#[Aggregate]
 #[Entity]
 #[Table("users")]
 class User
 {
-    #[AggregateIdentifier] // 2
+    #[AggregateIdentifier]
     #[Id]
     #[Column(type: "string")]
     private string $userId;
@@ -32,13 +32,13 @@ class User
         $this->isActive = false;
     }
 
-    #[CommandHandler("registerUser")] // 3
+    #[CommandHandler("registerUser")]
     public static function register(string $name): static
     {
         return new static(Uuid::uuid4()->toString(), $name);
     }
 
-    #[CommandHandler("activateUser")] // 3
+    #[CommandHandler("activateUser")]
     public function activate(): void
     {
         $this->isActive = true;
@@ -49,6 +49,7 @@ class User
         return $this->userId;
     }
 
+    #[CommandHandler("deactivateUser")]
     public function deactivate(): void
     {
         $this->isActive = false;
