@@ -5,6 +5,7 @@ env=dev
 docker-os=
 compose=docker-compose -f docker-compose.yml
 s=web-service
+tty=
 
 # I don't use Windows, feel free to make it work!
 # ifeq ($(docker-os), windows)
@@ -12,6 +13,11 @@ s=web-service
 # 		compose += -f etc/dev/docker-compose.windows.yml
 # 	endif
 # endif
+
+ifeq ($(GITHUB_ACTIONS), true)
+	tty = -T # docker-compose -T option required during CI in Github worklfow
+	compose += -f docker-compose.ci.yml
+endif
 
 export compose env docker-os
 
@@ -22,7 +28,7 @@ help: ## Display this help message
 	@cat $(MAKEFILE_LIST) | grep -e "^[a-zA-Z_\-]*: *.*## *" | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: tests
-tests: phpunit ## Runs all tests
+tests: php_phpunit ## Runs all tests
 
 .PHONY: start
 start: docker_up ## Start application
@@ -88,8 +94,8 @@ php_composer-update: ## Update project dependencies
 	$(compose) run --rm $(s) sh -lc 'COMPOSER_MEMORY_LIMIT=-1 composer update'
 
 .PHONY: php_phpunit
-php_phpunit: db_recreate ## execute project unit tests
-	$(compose) exec $(s) sh -lc "XDEBUG_MODE=coverage ./vendor/bin/phpunit $(conf)"
+php_phpunit: db_recreate_test ## execute project unit tests
+	$(compose) exec $(tty) --env XDEBUG_MODE=coverage $(s) ./vendor/bin/phpunit
 
 .PHONY: php_phpunit_coverage
 php_phpunit_coverage:
@@ -110,25 +116,34 @@ db_sql: ## Login to the database shell
 .PHONY: db_recreate
 db_recreate: ## recreate database
 	# Closing connections and forbidding new ones
-	$(compose) exec database sh -lc 'psql -d ecotone -U ecotone -c "\
+	$(compose) exec $(tty) database sh -lc 'psql -d ecotone -U ecotone -c "\
 		REVOKE CONNECT ON DATABASE \"ecotone\" FROM public;\
 	"'
-	$(compose) exec database sh -lc 'psql -d ecotone -U ecotone -c "\
+	$(compose) exec $(tty) database sh -lc 'psql -d ecotone -U ecotone -c "\
 		SELECT pid, pg_terminate_backend(pid) \
 		FROM pg_stat_activity \
 		WHERE datname = current_database() AND pid <> pg_backend_pid();"'
-	$(compose) exec $(s) sh -lc './bin/console doctrine:database:drop --force --if-exists'
-	$(compose) exec $(s) sh -lc './bin/console doctrine:database:create --if-not-exists'
-	$(compose) exec $(s) sh -lc './bin/console doctrine:migrations:migrate -n'
+	$(compose) exec $(tty) $(s) sh -lc './bin/console doctrine:database:drop --force --if-exists'
+	$(compose) exec $(tty) $(s) sh -lc './bin/console doctrine:database:create --if-not-exists'
+	$(compose) exec $(tty) $(s) sh -lc './bin/console doctrine:migrations:migrate -n'
 	# Allowing new connections
-	$(compose) exec database sh -lc 'psql -d ecotone -U ecotone -c "\
+	$(compose) exec $(tty) database sh -lc 'psql -d ecotone -U ecotone -c "\
 		GRANT CONNECT ON DATABASE \"ecotone\" TO public;\
 	"'
 
+.PHONY: db_recreate_test
+db_recreate_test: ## recreate the test database
+	$(compose) exec $(tty) --env APP_ENV=test $(s) /data/app/bin/console doctrine:database:drop --force --if-exists
+	$(compose) exec $(tty) --env APP_ENV=test $(s) /data/app/bin/console doctrine:database:create --if-not-exists
+	$(compose) exec $(tty) --env APP_ENV=test $(s) /data/app/bin/console doctrine:migrations:migrate -n
+	# TODO: Is there a way to initialize projections tables without fake data?
+	$(compose) exec $(tty) --env APP_ENV=test $(s) /data/app/bin/console app:register-user fake_user_to_generate_db_tables
+	$(compose) exec $(tty) --env APP_ENV=test $(s) /data/app/bin/console app:prepare-ticket fake_ticket_to_generate_db_tables ticket_desc
+
 .PHONY: db_migrations-diff
 db_migrations-diff: ## Generate migrations diff file
-	$(compose) exec $(s) sh -lc './bin/console doctrine:migrations:diff'
+	$(compose) exec $(tty) $(s) sh -lc './bin/console doctrine:migrations:diff'
 
 .PHONY: db_schema-validate
 db_schema-validate: ## validate database schema
-	$(compose) exec $(s) sh -lc './bin/console doctrine:schema:validate'
+	$(compose) exec $(tty) $(s) sh -lc './bin/console doctrine:schema:validate'

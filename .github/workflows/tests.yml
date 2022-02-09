@@ -1,0 +1,28 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies as containers cannot in Github workflows
+      run: composer install --no-scripts --no-interaction
+
+    - name: Build container images
+      run: make docker_build
+
+    - name: Start containers
+      run: make docker_up_detached
+
+    - name: make tests
+      run: make tests
+
+    - name: Stop containers
+      if: always()
+      run: make clean

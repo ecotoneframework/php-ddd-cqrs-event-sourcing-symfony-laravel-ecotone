@@ -1,0 +1,10 @@
+version: "3"
+# Working with mounted local folder doesn't work in Github workflow
+services:
+  web-service:
+    volumes:
+      - "/data/app"
+
+  projections:
+    volumes:
+      - "/data/app"
