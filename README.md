@@ -1,5 +1,7 @@
 # PHP Application using DDD CQRS Event Sourcing Symfony Ecotone with Hexagonal Architecture
 
+[![Tests](https://github.com/ecotoneframework/php-ddd-cqrs-event-sourcing-symfony-ecotone/actions/workflows/tests.yml/badge.svg)](https://github.com/ecotoneframework/php-ddd-cqrs-event-sourcing-symfony-ecotone/actions/workflows/tests.yml)
+
 ![alt text](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "PHP Application using DDD CQRS Event Sourcing Symfony with Hexagonal Architecture")
 
 Application shows the how complex systems can be built with ease using PHP.
@@ -10,9 +12,10 @@ Have fun :)
 # Run using docker-compose
 
 ```shell
-make start  # Starts the containers. `make docker_up_detached` would run it in detached (-d) mode.
+make start  # Starts the containers. `make docker_up -- -d` would run it in detached (-d) mode.
 make help   # To see the available usage command
 make [tab]  # For autocomplete
+make tests  # To run tests (Phpunit). Passing arguments like `make tests -- --testdox --filter MyTestCase`
 make sh     # to login to the bash of the app container
 # Inside the container
 console [tab] # To get all the Symfony's available commands including Ecotone ones

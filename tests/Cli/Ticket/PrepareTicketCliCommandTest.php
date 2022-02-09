@@ -7,7 +7,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class PrepareTicketCliCommandTest extends KernelTestCase
 {
-    public function testExecute()
+    public function test_it_should_prepare_a_new_ticket_then_display_its_id()
     {
         $kernel = self::bootKernel();
         $application = new Application($kernel);

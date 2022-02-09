@@ -21,8 +21,13 @@ endif
 
 export compose env docker-os
 
+# Arguments support https://stackoverflow.com/a/45003119/2714285
+remaining_args := $(wordlist 2, $(words $(MAKECMDGOALS)), $(MAKECMDGOALS))
+$(eval $(remaining_args):;@true)
+
 ## UTILITIES
 
+.DEFAULT_GOAL := help
 .PHONY: help
 help: ## Display this help message
 	@cat $(MAKEFILE_LIST) | grep -e "^[a-zA-Z_\-]*: *.*## *" | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -60,32 +65,32 @@ tests_coverage: php_phpunit_coverage ## Runs all tests with coverage
 
 .PHONY: docker_build
 docker_build: ## build environment and initialize composer and project dependencies
-	$(compose) build --parallel --no-cache
+	$(compose) build --parallel --no-cache  $(remaining_args)
 
 .PHONY: docker_up
 docker_up: ## spin up environment
-	$(compose) up
-
-.PHONY: docker_up_detached
-docker_up_detached: ## spin up environment in detached mode
-	$(compose) up -d
+	$(compose) up $(remaining_args)
 
 .PHONY: docker_down
 docker_down: ## shutoff services
-	$(compose) down --remove-orphans
+	$(compose) down --remove-orphans  $(remaining_args)
 
 .PHONY: docker_ps
 docker_ps: ## list up services
-	$(compose) ps
+	$(compose) ps $(remaining_args)
 
 .PHONY: docker_stop
 docker_stop: ## stop environment
-	$(compose) stop
+	$(compose) stop  $(remaining_args)
 
 .PHONY: docker_remove
 docker_remove: ## stop and delete containers, clean volumes.
 	$(compose) stop
-	docker-compose rm -v -f
+	docker-compose rm -v -f  $(remaining_args)
+
+.PHONY: docker_exec
+docker_exec: ## Runs a command in the web-service container.
+	$(compose) exec $(tty) $(s) $(remaining_args)
 
 ## PHP
 
@@ -95,10 +100,10 @@ php_composer-update: ## Update project dependencies
 
 .PHONY: php_phpunit
 php_phpunit: db_recreate_test ## execute project unit tests
-	$(compose) exec $(tty) --env XDEBUG_MODE=coverage $(s) ./vendor/bin/phpunit
+	$(compose) exec $(tty) --env XDEBUG_MODE=coverage $(s) ./vendor/bin/phpunit $(remaining_args)
 
-.PHONY: php_phpunit_coverage
-php_phpunit_coverage:
+.PHONY: php_coveralls
+php_coveralls:
 	$(compose) run --rm $(s) sh -lc "wget -q https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar; \
 		chmod +x php-coveralls.phar; \
 		export COVERALLS_RUN_LOCALLY=1; \

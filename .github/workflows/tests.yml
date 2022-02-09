@@ -18,10 +18,13 @@ jobs:
       run: make docker_build
 
     - name: Start containers
-      run: make docker_up_detached
+      run: make docker_up -- -d
+
+    - name: enable xdebug for coverage
+      run: make docker_exec -- phpenmod xdebug
 
     - name: make tests
-      run: make tests
+      run: make tests -- --coverage-clover=coverage.clover --coverage-text --testdox
 
     - name: Stop containers
       if: always()

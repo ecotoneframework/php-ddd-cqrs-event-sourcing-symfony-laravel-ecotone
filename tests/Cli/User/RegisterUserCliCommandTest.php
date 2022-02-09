@@ -7,7 +7,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class RegisterUserCliCommandTest extends KernelTestCase
 {
-    public function testExecute()
+    public function test_it_should_register_a_new_user_then_display_its_id()
     {
         $kernel = self::bootKernel();
         $application = new Application($kernel);
