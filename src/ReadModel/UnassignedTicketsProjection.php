@@ -34,14 +34,10 @@ class UnassignedTicketsProjection
     #[QueryHandler(self::GET_UNASSIGED_TICKETS)]
     public function getUnassignedTickets() : array
     {
-        try {
-            return $this->connection->executeQuery(<<<SQL
-    SELECT * FROM unassigned_tickets
+        return $this->connection->executeQuery(<<<SQL
+SELECT * FROM unassigned_tickets
 SQL
-            )->fetchAllAssociative();
-        }catch (TableNotFoundException) {
-            return [];
-        }
+        )->fetchAllAssociative();
     }
 
     #[EventHandler(endpointId:"UnassignedTicketsProjection::onTicketWasPreperad")]

@@ -46,14 +46,10 @@ SQL, ["ticket_id" => $ticketId])->fetchAllAssociative()[0]
     #[QueryHandler(self::GET_PREPARED_TICKETS)]
     public function getPreparedTickets() : array
     {
-        try {
-            return $this->connection->executeQuery(<<<SQL
-    SELECT * FROM last_prepared_tickets ORDER BY prepared_at DESC
+        return $this->connection->executeQuery(<<<SQL
+SELECT * FROM last_prepared_tickets ORDER BY prepared_at DESC
 SQL
-            )->fetchAllAssociative();
-        }catch (TableNotFoundException) {
-            return [];
-        }
+        )->fetchAllAssociative();
     }
 
     #[EventHandler(endpointId:"LastPreparedTicketsProjection::onTicketWasPreperad")]
