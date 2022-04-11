@@ -1,40 +1,129 @@
 version: "3"
 
 services:
-  web-service:
-    build: .
+  symfony-app-web-service:
+    build:
+      context: symfony-application
     volumes:
-      - "$PWD:/data/app"
+      - "$PWD/symfony-application:/data/app"
     working_dir: "/data/app"
     networks:
       - default
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_DSN: pgsql://ecotone:secret@database:5432/ecotone
+      DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
+      RABBIT_HOST: "rabbitmq"
+    depends_on:
+      - symfony-app-database
+      - rabbitmq
     ports:
-      - 3000:80
-  projections:
-    build: .
+      - 3001:80
+  symfony-app-projections:
+    build:
+      context: symfony-application
     volumes:
-      - "$PWD:/data/app"
+      - "$PWD/symfony-application:/data/app"
     working_dir: "/data/app"
     user: 1000:1000
     networks:
       - default
-    restart: always
     environment:
       APP_ENV: "dev"
+      APP_DEBUG: "true"
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
-      DATABASE_DSN: pgsql://ecotone:secret@database:5432/ecotone
+      DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
+      RABBIT_HOST: "rabbitmq"
+    depends_on:
+      - symfony-app-database
+      - rabbitmq
+    restart: always
+    entrypoint: ""
     command: "/data/app/bin/console ecotone:run asynchronous_projections -vvv"
-  database:
+  symfony-distributed-consumer:
+    build:
+      context: symfony-application
+    volumes:
+      - "$PWD/symfony-application:/data/app"
+    working_dir: "/data/app"
+    user: 1000:1000
+    networks:
+      - default
+    environment:
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      COMPOSER_HOME: /data/app
+      COMPOSE_HTTP_TIMEOUT: 9999
+      DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
+      RABBIT_HOST: "rabbitmq"
+    depends_on:
+      - symfony-app-database
+      - rabbitmq
+    restart: always
+    entrypoint: ""
+    command: "/data/app/bin/console ecotone:run backoffice_service -vvv"
+  symfony-app-database:
     image: postgres:12.1
     networks:
       - default
     ports:
-      - 3001:5432
+      - 3002:5432
     environment:
       POSTGRES_USER: "ecotone"
       POSTGRES_PASSWORD: "secret"
+  laravel-app-web-service:
+    build:
+      context: laravel-application
+    volumes:
+      - "$PWD/laravel-application:/data/app"
+    working_dir: "/data/app"
+    networks:
+      - default
+    ports:
+      - 3000:80
+    depends_on:
+      - laravel-app-database
+      - mailhog
+      - rabbitmq
+  laravel-notifications-consumer:
+    build:
+      context: laravel-application
+    volumes:
+      - "$PWD/laravel-application:/data/app"
+    working_dir: "/data/app"
+    networks:
+      - default
+    restart: always
+    entrypoint: ""
+    command: "php artisan ecotone:run notifications -vvv"
+    depends_on:
+      - laravel-app-database
+      - mailhog
+      - rabbitmq
+  laravel-app-database:
+    image: 'mysql/mysql-server:8.0'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel_app
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: hash
+    ports:
+      - 3003:3306
+    networks:
+      - default
+  mailhog:
+    image: 'mailhog/mailhog'
+    networks:
+      - default
+    ports:
+      - "3004:8025"
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - default
+    ports:
+      - "3005:15672"
