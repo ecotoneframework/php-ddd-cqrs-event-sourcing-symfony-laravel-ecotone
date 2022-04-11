@@ -16,7 +16,7 @@ Whenever new issue is reported, email is send to the customer confirming, that C
 
 Symfony application provides Backoffice, where we may register employees. 
 In Backoffice customer issues are correlated with tickets and employees are responsible for handling them.
-![Symfony Microservice](documentation/backoffice-customer-issue.png "Symfony Microservice")
+![Symfony Microservice](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "Symfony Microservice")
 Employee that works on the tickets provides information about the status.
 When ticket is finished, it's closed with summary. 
 
