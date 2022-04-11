@@ -2,10 +2,10 @@
 
 ![alt text](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "PHP Application using DDD CQRS Event Sourcing Symfony with Hexagonal Architecture")
 
-Demo provides two `PHP Microservices` collaborating with each over [RabbitMQ](https://www.rabbitmq.com/). 
-First Microservice is using `Symfony CQRS DDD Aggregates with Doctrine ORM and Event Sourcing` backed by [Prooph](http://getprooph.org/), modeled in Hexagonal Architecture.
-Second Microservice is using `Laravel, DDD Aggregates with Eloquent and asynchronous event handling`. 
-Each service is powered by [Ecotone Framework](https://github.com/ecotoneFramework/ecotone) 
+Demo provides two `PHP Microservices` collaborating with each over [RabbitMQ](https://www.rabbitmq.com/).   
+First Microservice is using `Symfony CQRS DDD Aggregates with Doctrine ORM and Event Sourcing` backed by [Prooph](http://getprooph.org/), modeled in Hexagonal Architecture.  
+Second Microservice is using `Laravel, DDD Aggregates with Eloquent and asynchronous event handling`.   
+Each service is powered by [Ecotone Framework](https://github.com/ecotoneFramework/ecotone)   
 
 # Business usage
 
