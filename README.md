@@ -9,18 +9,18 @@ Each service is powered by [Ecotone Framework](https://github.com/ecotoneFramewo
 
 # Business usage
 
-Laravel application is Customer Service, where customers can report issues.  
+**Laravel application is Customer Service, where customers can report issues.**  
 ![Laravel CQRS](documentation/customer-service.png "Laravel CQRS")
-Whenever new issue is reported, email is send to the customer confirming, that Customer Service is now working on it.  
+**Whenever new issue is reported, email is send to the customer confirming, that Customer Service is now working on it.**  
 ![Laravel asynchronous event handling](documentation/issue-reported.png "Laravel asynchronous events")
 
-Symfony application provides Backoffice, where we may register employees. 
-In Backoffice customer issues are correlated with tickets and employees are responsible for handling them.  
+**Symfony application provides Backoffice, where we may register employees. 
+In Backoffice customer issues are correlated with tickets and employees are responsible for handling them.**  
 ![Symfony Microservice](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "Symfony Microservice")
-Employee that works on the tickets provides information about the status.
+**Employee that works on the tickets provides information about the status.
 When ticket is finished, it's closed with summary. 
 
-After ticket is closed, correlated issue from Customer Service is also closed and summary email is sent to the customer.
+After ticket is closed, correlated issue from Customer Service is also closed and summary email is sent to the customer.**
 
 * Integration between Services implementation and blog post is in progress
 
