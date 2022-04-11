@@ -26,10 +26,10 @@ After ticket is closed, correlated issue from Customer Service is also closed an
 
 # Access applications
 
-- [Customer Service - Laravel](localhost:3000)  
-- [Backoffice - Symfony](localhost:3001)  
-- [Mail Server](localhost:3004)
-- [RabbitMQ Management Console](localhost:3005)
+- [Customer Service - Laravel](http://localhost:3000)  
+- [Backoffice - Symfony](http://localhost:3001)  
+- [Mail Server](http://localhost:3004)
+- [RabbitMQ Management Console](http://localhost:3005)
 
 # Quick start to get familiar with concepts
 
@@ -42,6 +42,9 @@ After ticket is closed, correlated issue from Customer Service is also closed an
 
 # Run using docker-compose
 
+Run `docker-compose up -d`
+
+or:
 ```shell
 make start  # Starts the containers. `make docker_up_detached` would run it in detached (-d) mode.
 make help   # To see the available usage command
