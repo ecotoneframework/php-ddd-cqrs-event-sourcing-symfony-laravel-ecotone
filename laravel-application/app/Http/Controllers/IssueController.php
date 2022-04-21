@@ -12,6 +12,13 @@ class IssueController extends Controller
     {
         $issueId = $commandBus->sendWithRouting(Issue::REPORT_ISSUE, $request->all());
 
-        return view('done', ["id" => $issueId, "domain" => $request->root()]);
+        return view('done', ["id" => $issueId]);
+    }
+
+    public function close(CommandBus $commandBus)
+    {
+        $commandBus->sendWithRouting(Issue::CLOSE_ISSUE, metadata: ["aggregate.id" => request('id')]);
+
+        return view('closed');
     }
 }

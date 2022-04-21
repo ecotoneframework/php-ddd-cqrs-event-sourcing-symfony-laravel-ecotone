@@ -22,8 +22,6 @@
         </style>
     </head>
     <body class="antialiased">
-        <h1>Your issue was reported</h1>
-        Check your email!
-        If you opened the issue by accident you may close it <a href="/issues/{{ $id }}/close"><b>here.</b></a>.
+        <h1>Your issue was closed</h1>
     </body>
 </html>

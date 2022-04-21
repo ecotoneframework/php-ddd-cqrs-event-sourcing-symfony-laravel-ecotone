@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Infrastructure\EcotoneConfiguration;
-use App\Mail\ConfirmReportedIssue;
+use App\Mail\ClosedIssueMail;
+use App\Mail\ConfirmReportedIssueMail;
+use App\Models\Event\IssueWasClosed;
 use App\Models\Event\IssueWasReported;
 use Ecotone\Messaging\Attribute\Asynchronous;
 use Ecotone\Modelling\Attribute\EventHandler;
@@ -17,7 +19,16 @@ class IssueSubscriber
     {
         $issue = Issue::find($event->issueId);
 
-        \Mail::to($issue->email)->send(new ConfirmReportedIssue($event->issueId));
+        \Mail::to($issue->email)->send(new ConfirmReportedIssueMail($event->issueId));
+    }
+
+    #[Asynchronous(EcotoneConfiguration::NOTIFICATIONS_CHANNEL)]
+    #[EventHandler(endpointId: "doneIssueNotification")]
+    public function sendNotificationAboutClosedIssue(IssueWasClosed $event): void
+    {
+        $issue = Issue::find($event->issueId);
+
+        \Mail::to($issue->email)->send(new ClosedIssueMail($event->issueId));
     }
 
     #[EventHandler]

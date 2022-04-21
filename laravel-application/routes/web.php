@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IssueController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/issues', [\App\Http\Controllers\IssueController::class, 'report']);
+Route::post('/issues', [IssueController::class, 'report']);
+Route::get('/issues/{id}/close', [IssueController::class, 'close']);

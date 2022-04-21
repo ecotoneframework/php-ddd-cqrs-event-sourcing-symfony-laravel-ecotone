@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Command\ReportIssue;
+use App\Models\Event\IssueWasClosed;
 use App\Models\Event\IssueWasReported;
 use Ecotone\Modelling\Attribute\Aggregate;
 use Ecotone\Modelling\Attribute\AggregateIdentifier;
@@ -18,6 +19,7 @@ final class Issue extends Model
     use WithAggregateEvents;
 
     const REPORT_ISSUE = "issue.report";
+    const CLOSE_ISSUE = "issue.close";
 
     #[CommandHandler(Issue::REPORT_ISSUE)]
     public static function reportNew(ReportIssue $command): self
@@ -32,6 +34,18 @@ final class Issue extends Model
         $issue->recordThat(new IssueWasReported($issue->id));
 
         return $issue;
+    }
+
+    #[CommandHandler(self::CLOSE_ISSUE)]
+    public function close(): void
+    {
+        if (!$this->ongoing) {
+            return;
+        }
+
+        $this->ongoing = false;
+
+        $this->recordThat(new IssueWasClosed($this->id));
     }
 
     #[AggregateIdentifierMethod("id")]
