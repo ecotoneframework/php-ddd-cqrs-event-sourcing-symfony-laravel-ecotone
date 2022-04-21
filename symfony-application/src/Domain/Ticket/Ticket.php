@@ -38,6 +38,7 @@ class Ticket
         return [new TicketWasPrepared($command->ticketId ?: Uuid::uuid4()->toString(), $command->ticketType, $command->description)];
     }
 
+    #[Distributed]
     #[CommandHandler(self::CANCEL_TICKET)]
     public function cancel(): array
     {

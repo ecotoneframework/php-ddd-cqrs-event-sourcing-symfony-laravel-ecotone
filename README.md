@@ -44,7 +44,7 @@ After ticket is closed, correlated issue from Customer Service is also closed an
 
 Run `docker-compose up -d`
 
-or:
+Shell:
 ```shell
 make start  # Starts the containers. `make docker_up_detached` would run it in detached (-d) mode.
 make help   # To see the available usage command

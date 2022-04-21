@@ -4,7 +4,7 @@
 env=dev
 docker-os=
 compose=docker-compose -f docker-compose.yml
-s=web-service
+s=symfony-app-web-service
 
 # I don't use Windows, feel free to make it work!
 # ifeq ($(docker-os), windows)

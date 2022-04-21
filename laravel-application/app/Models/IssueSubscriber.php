@@ -46,4 +46,18 @@ class IssueSubscriber
             ]
         );
     }
+
+    #[EventHandler]
+    public function closeTicketInBackofficeService(IssueWasClosed $event, DistributedBus $distributedBus): void
+    {
+        $issue = Issue::find($event->issueId);
+
+        $distributedBus->convertAndSendCommand(
+            "backoffice_service",
+            "ticket.cancel",
+            [
+                "ticketId" => $issue->ticketId
+            ]
+        );
+    }
 }
