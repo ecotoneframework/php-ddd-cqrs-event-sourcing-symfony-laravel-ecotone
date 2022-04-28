@@ -34,6 +34,7 @@ After ticket is closed, correlated issue from Customer Service is also closed an
 # Quick start to get familiar with concepts
 
 * [Symfony and Doctrine ORM as Aggregates](https://blog.ecotone.tech/build-symfony-application-with-ease-using-ecotone/)
+* [Laravel and Eloquent as Aggregates](https://blog.ecotone.tech/build-laravel-application-using-ddd-and-cqrs/)
 * [How to implement CQRS](https://blog.ecotone.tech/cqrs-in-php/)
 * [How to implement Event Handling](https://blog.ecotone.tech/event-handling-in-php/)
 * [How to handle Asynchronicity](https://blog.ecotone.tech/asynchronous-php/)
