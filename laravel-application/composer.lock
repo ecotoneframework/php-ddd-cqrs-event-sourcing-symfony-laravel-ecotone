@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f60d88bc29bd8a2b55eb01fd4129edf9",
+    "content-hash": "f1531246771ac9c272177ece0a6d7348",
     "packages": [
         {
             "name": "brick/math",
@@ -510,20 +510,20 @@
         },
         {
             "name": "ecotone/amqp",
-            "version": "1.36.1",
+            "version": "1.36.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/amqp.git",
-                "reference": "00d9830f0b974666dd9d3e0f4ec68b0e67d8908f"
+                "reference": "39bb348a2d1708dc146da8ba58015460fcedd3dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/amqp/zipball/00d9830f0b974666dd9d3e0f4ec68b0e67d8908f",
-                "reference": "00d9830f0b974666dd9d3e0f4ec68b0e67d8908f",
+                "url": "https://api.github.com/repos/ecotoneframework/amqp/zipball/39bb348a2d1708dc146da8ba58015460fcedd3dd",
+                "reference": "39bb348a2d1708dc146da8ba58015460fcedd3dd",
                 "shasum": ""
             },
             "require": {
-                "ecotone/enqueue": "1.36.1",
+                "ecotone/enqueue": "1.36.5",
                 "enqueue/amqp-ext": "^0.10.4",
                 "enqueue/dsn": "^0.10.4",
                 "enqueue/enqueue": "^0.10.0",
@@ -580,7 +580,7 @@
                 "rabbitmq"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/amqp/tree/1.36.1"
+                "source": "https://github.com/ecotoneframework/amqp/tree/1.36.5"
             },
             "funding": [
                 {
@@ -588,20 +588,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-21T11:40:06+00:00"
+            "time": "2022-08-21T15:22:00+00:00"
         },
         {
             "name": "ecotone/ecotone",
-            "version": "1.36.1",
+            "version": "1.36.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/ecotone.git",
-                "reference": "15cd500383bc42fc8d86b8ac50f86ef7485c50f4"
+                "reference": "8e34d44f25ea3ef38754714b50ac086221bc90b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/15cd500383bc42fc8d86b8ac50f86ef7485c50f4",
-                "reference": "15cd500383bc42fc8d86b8ac50f86ef7485c50f4",
+                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/8e34d44f25ea3ef38754714b50ac086221bc90b0",
+                "reference": "8e34d44f25ea3ef38754714b50ac086221bc90b0",
                 "shasum": ""
             },
             "require": {
@@ -650,7 +650,7 @@
                 "service-bus"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/ecotone/tree/1.36.1"
+                "source": "https://github.com/ecotoneframework/ecotone/tree/1.36.5"
             },
             "funding": [
                 {
@@ -658,24 +658,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-21T11:38:45+00:00"
+            "time": "2022-08-21T14:33:17+00:00"
         },
         {
             "name": "ecotone/enqueue",
-            "version": "1.36.1",
+            "version": "1.36.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/enqueue.git",
-                "reference": "8053d582e7062a5d865af0520980035c5f8e1db0"
+                "reference": "8620779f8d5eb484afe091aac1e686408a91a7db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/8053d582e7062a5d865af0520980035c5f8e1db0",
-                "reference": "8053d582e7062a5d865af0520980035c5f8e1db0",
+                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/8620779f8d5eb484afe091aac1e686408a91a7db",
+                "reference": "8620779f8d5eb484afe091aac1e686408a91a7db",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "1.36.1",
+                "ecotone/ecotone": "1.36.5",
                 "enqueue/dsn": "^0.10.4",
                 "queue-interop/queue-interop": "^0.8"
             },
@@ -721,7 +721,7 @@
                 "enqueue"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/enqueue/tree/1.36.1"
+                "source": "https://github.com/ecotoneframework/enqueue/tree/1.36.5"
             },
             "funding": [
                 {
@@ -729,24 +729,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-21T11:40:24+00:00"
+            "time": "2022-08-21T15:22:09+00:00"
         },
         {
             "name": "ecotone/jms-converter",
-            "version": "1.36.1",
+            "version": "1.36.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/jms-converter.git",
-                "reference": "88b815768d08c314a656571f9b86bfff6b53540b"
+                "reference": "4431025c5769ae68948e305e4294375c4485f300"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/88b815768d08c314a656571f9b86bfff6b53540b",
-                "reference": "88b815768d08c314a656571f9b86bfff6b53540b",
+                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/4431025c5769ae68948e305e4294375c4485f300",
+                "reference": "4431025c5769ae68948e305e4294375c4485f300",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "1.36.1",
+                "ecotone/ecotone": "1.36.5",
                 "jms/serializer": "^3.17",
                 "symfony/cache": "^5.4|^6.1"
             },
@@ -797,7 +797,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.36.1"
+                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.36.5"
             },
             "funding": [
                 {
@@ -805,24 +805,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-21T11:40:37+00:00"
+            "time": "2022-08-21T15:22:13+00:00"
         },
         {
             "name": "ecotone/laravel",
-            "version": "1.36.1",
+            "version": "1.36.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/laravel.git",
-                "reference": "b624617dce377e29d8fd83e64034e15d7b2dd602"
+                "reference": "0473ddfa852bc70185845eef3fa4717fc86c1d01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/laravel/zipball/b624617dce377e29d8fd83e64034e15d7b2dd602",
-                "reference": "b624617dce377e29d8fd83e64034e15d7b2dd602",
+                "url": "https://api.github.com/repos/ecotoneframework/laravel/zipball/0473ddfa852bc70185845eef3fa4717fc86c1d01",
+                "reference": "0473ddfa852bc70185845eef3fa4717fc86c1d01",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "1.36.1",
+                "ecotone/ecotone": "1.36.5",
                 "laravel/framework": "^9.0"
             },
             "require-dev": {
@@ -879,7 +879,7 @@
                 "messaging"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/laravel/tree/1.36.1"
+                "source": "https://github.com/ecotoneframework/laravel/tree/1.36.5"
             },
             "funding": [
                 {
@@ -887,7 +887,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-21T11:40:47+00:00"
+            "time": "2022-08-21T15:22:15+00:00"
         },
         {
             "name": "egulias/email-validator",
