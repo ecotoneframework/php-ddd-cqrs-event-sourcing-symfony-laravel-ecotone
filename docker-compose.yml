@@ -14,6 +14,7 @@ services:
       APP_DEBUG: "true"
       DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
+      RUN_MIGRATION: "true"
     depends_on:
       - symfony-app-database
       - rabbitmq
@@ -78,6 +79,8 @@ services:
     volumes:
       - "$PWD/laravel-application:/data/app"
     working_dir: "/data/app"
+    environment:
+      DATABASE_URL: mysql://admin:hash@laravel-app-database/laravel_app
     networks:
       - default
     ports:
@@ -127,3 +130,21 @@ services:
       - default
     ports:
       - "3005:15672"
+  monitoring:
+    build:
+      context: symfony-application
+    volumes:
+      - "$PWD/symfony-application:/data/app"
+    working_dir: "/data/app"
+    networks:
+      - default
+    environment:
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
+      RABBIT_HOST: "rabbitmq"
+    depends_on:
+      - symfony-app-database
+      - rabbitmq
+    ports:
+      - 3006:80

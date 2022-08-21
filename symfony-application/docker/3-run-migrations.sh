@@ -2,4 +2,4 @@
 
 set -e
 
-bin/console d:m:migrate --no-interaction
+if [ "$RUN_MIGRATION" == "true" ]; then bin/console d:m:migrate --no-interaction; else sleep 5; fi
