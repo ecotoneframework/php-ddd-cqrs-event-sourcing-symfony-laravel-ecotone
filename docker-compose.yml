@@ -130,7 +130,7 @@ services:
       - default
     ports:
       - "3005:15672"
-  monitoring:
+  pulse:
     build:
       context: ecotone-pulse
     volumes:
