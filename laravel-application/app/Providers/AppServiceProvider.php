@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use Ecotone\Dbal\DbalConnection;
 use Enqueue\AmqpExt\AmqpConnectionFactory;
+use Enqueue\Dbal\DbalConnectionFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(AmqpConnectionFactory::class, function () {
             return new AmqpConnectionFactory("amqp+lib://guest:guest@rabbitmq:5672//");
+        });
+        $this->app->singleton(DbalConnectionFactory::class, function () {
+            return DbalConnection::create(DB::connection()->getDoctrineConnection());
         });
     }
 

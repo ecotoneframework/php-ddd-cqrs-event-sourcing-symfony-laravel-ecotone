@@ -4,7 +4,6 @@ namespace App\Infrastructure;
 
 use Ecotone\Amqp\AmqpBackedMessageChannelBuilder;
 use Ecotone\Amqp\Distribution\AmqpDistributedBusConfiguration;
-use Ecotone\Dbal\Configuration\DbalConfiguration;
 use Ecotone\Messaging\Attribute\ServiceContext;
 
 class EcotoneConfiguration

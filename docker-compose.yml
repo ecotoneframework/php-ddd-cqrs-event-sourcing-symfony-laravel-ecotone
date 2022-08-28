@@ -69,7 +69,7 @@ services:
     networks:
       - default
     ports:
-      - 3002:5432
+      - "3002:5432"
     environment:
       POSTGRES_USER: "ecotone"
       POSTGRES_PASSWORD: "secret"
@@ -84,7 +84,7 @@ services:
     networks:
       - default
     ports:
-      - 3000:80
+      - "3000:80"
     depends_on:
       - laravel-app-database
       - mailhog
@@ -112,7 +112,7 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: hash
     ports:
-      - 3003:3306
+      - "3003:3306"
     networks:
       - default
   mailhog:
