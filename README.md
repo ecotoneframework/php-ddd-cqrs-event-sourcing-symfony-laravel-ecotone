@@ -22,12 +22,18 @@ When ticket is finished, it's closed with summary.
 
 After ticket is closed, correlated issue from Customer Service is also closed and summary email is sent to the customer.  
 
-* Integration between Services implementation and blog post is in progress
+# Playing with the demo
+
+Go to `customer_service` (laravel application) [http://localhost:3000/](link) to report issue as a customer.
+After reporting the issue as the customer it will be synchronized to `backoffice_service` (symfony application) [http://localhost:3001/prepared-tickets](link).
+Whenever issue is reported, confirming email will be sent to the customer [http://localhost:3004/](link)
+First team email is sent, it's set up for failing, you may retry it to successfully sent email [http://localhost:3006/service/customer_service](link)
 
 # Access applications
 
 - [Customer Service - Laravel](http://localhost:3000)  
 - [Backoffice - Symfony](http://localhost:3001)  
+- [Ecotone Pulse](http://localhost:3006)
 - [Mail Server](http://localhost:3004)
 - [RabbitMQ Management Console](http://localhost:3005)
 

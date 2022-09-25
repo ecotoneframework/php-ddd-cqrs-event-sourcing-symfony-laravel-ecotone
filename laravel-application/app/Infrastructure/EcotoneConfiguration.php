@@ -19,6 +19,9 @@ class EcotoneConfiguration
     #[ServiceContext]
     public function distributedPublisher()
     {
-        return AmqpDistributedBusConfiguration::createPublisher();
+        return [
+            AmqpDistributedBusConfiguration::createConsumer(),
+            AmqpDistributedBusConfiguration::createPublisher()
+        ];
     }
 }

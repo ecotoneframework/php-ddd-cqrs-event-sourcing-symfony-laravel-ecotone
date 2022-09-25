@@ -10,10 +10,10 @@
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "ecotone/laravel": "^1.37.0",
-        "ecotone/amqp": "^1.37.0",
-        "ecotone/jms-converter": "^1.37.0",
-        "ecotone/dbal": "^1.37.0"
+        "ecotone/laravel": "^1.44.0",
+        "ecotone/amqp": "^1.44.0",
+        "ecotone/jms-converter": "^1.44.0",
+        "ecotone/dbal": "^1.44.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -1,2 +1,3 @@
 ecotone:
   serviceName: "backoffice_service"
+  defaultErrorChannel: "dbal_dead_letter"

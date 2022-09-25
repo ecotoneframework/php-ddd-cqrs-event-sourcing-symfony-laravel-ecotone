@@ -8,6 +8,7 @@ use App\Mail\ConfirmReportedIssueMail;
 use App\Models\Event\IssueWasClosed;
 use App\Models\Event\IssueWasReported;
 use Ecotone\Messaging\Attribute\Asynchronous;
+use Ecotone\Messaging\Attribute\Parameter\Header;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ecotone\Modelling\DistributedBus;
 
@@ -15,9 +16,15 @@ class IssueSubscriber
 {
     #[Asynchronous(EcotoneConfiguration::NOTIFICATIONS_CHANNEL)]
     #[EventHandler(endpointId: "confirmReceivedIssueNotification")]
-    public function sendNotificationToConfirmReceivedIssue(IssueWasReported $event): void
+    public function sendNotificationToConfirmReceivedIssue(IssueWasReported $event, #[Header("ecotone.dlq.message_replied")] ?string $wasReplied): void
     {
         $issue = Issue::find($event->issueId);
+
+// This is just for demo purposes. The first time email is sent, it will fail and will be delivered to DLQ
+// after replaying it from Ecotone Pulse, it will be handled correctly.
+        if (is_null($wasReplied)) {
+            throw new \InvalidArgumentException("Can't render template, missing issue id parameter");
+        }
 
         \Mail::to($issue->email)->send(new ConfirmReportedIssueMail($event->issueId));
     }

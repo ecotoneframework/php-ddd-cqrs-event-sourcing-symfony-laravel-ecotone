@@ -89,6 +89,21 @@ services:
       - laravel-app-database
       - mailhog
       - rabbitmq
+  laravel-distributed-consumer:
+    build:
+      context: laravel-application
+    volumes:
+      - "$PWD/laravel-application:/data/app"
+    working_dir: "/data/app"
+    networks:
+      - default
+    restart: always
+    entrypoint: ""
+    command: "php artisan ecotone:run customer_service -vvv"
+    depends_on:
+      - laravel-app-database
+      - mailhog
+      - rabbitmq
   laravel-notifications-consumer:
     build:
       context: laravel-application
@@ -131,8 +146,7 @@ services:
     ports:
       - "3005:15672"
   pulse:
-    build:
-      context: ecotone-pulse
+    image: ecotoneframework/ecotone-pulse:0.1.0
     volumes:
       - "$PWD/ecotone-pulse:/data/app"
     working_dir: "/data/app"
@@ -141,5 +155,7 @@ services:
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
+      SERVICES: '[{"name":"customer_service","databaseDsn":"mysql://admin:hash@laravel-app-database/laravel_app"},{"name":"backoffice_service","databaseDsn":"pgsql://ecotone:secret@symfony-app-database:5432/ecotone"}]'
+      AMQP_DSN: "amqp://guest:guest@rabbitmq:5672//"
     ports:
       - 3006:80
