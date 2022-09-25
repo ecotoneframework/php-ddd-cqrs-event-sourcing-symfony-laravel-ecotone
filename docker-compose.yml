@@ -147,8 +147,6 @@ services:
       - "3005:15672"
   pulse:
     image: ecotoneframework/ecotone-pulse:0.1.0
-    volumes:
-      - "$PWD/ecotone-pulse:/data/app"
     working_dir: "/data/app"
     networks:
       - default
