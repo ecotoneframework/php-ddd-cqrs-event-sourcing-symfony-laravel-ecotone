@@ -25,9 +25,9 @@ After ticket is closed, correlated issue from Customer Service is also closed an
 # Playing with the demo
 
 Go to `customer_service` (laravel application) [http://localhost:3000/](link) to report issue as a customer.
-After reporting the issue as the customer it will be synchronized to `backoffice_service` (symfony application) [http://localhost:3001/prepared-tickets](link).
-Whenever issue is reported, confirming email will be sent to the customer [http://localhost:3004/](link)
-First team email is sent, it's set up for failing, you may retry it to successfully sent email [http://localhost:3006/service/customer_service](link)
+After reporting the issue as the customer it will be synchronized to `backoffice_service` (symfony application) [http://localhost:3001/prepared-tickets](link).  
+Whenever issue is reported, confirming email will be sent to the customer [http://localhost:3004/](link).   
+First time email is send however, it's set up for failing, so you may retry it directly from [Ecotone Pulse](https://docs.ecotone.tech/modules/ecotone-pulse) [http://localhost:3006/service/customer_service](link)  
 
 # Access applications
 
