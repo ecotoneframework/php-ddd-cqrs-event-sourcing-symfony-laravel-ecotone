@@ -15,6 +15,9 @@ services:
       DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
       RUN_MIGRATION: "true"
+      APP_INSTALL_DEPENDENCIES: "true"
+      OTEL_SDK_DISABLED: 'false'
+      OTEL_SERVICE_NAME: 'backoffice_service'
     depends_on:
       - symfony-app-database
       - rabbitmq
@@ -36,6 +39,8 @@ services:
       COMPOSE_HTTP_TIMEOUT: 9999
       DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
+      OTEL_SDK_DISABLED: 'false'
+      OTEL_SERVICE_NAME: 'backoffice_service'
     depends_on:
       - symfony-app-database
       - rabbitmq
@@ -58,6 +63,8 @@ services:
       COMPOSE_HTTP_TIMEOUT: 9999
       DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
+      OTEL_SDK_DISABLED: 'false'
+      OTEL_SERVICE_NAME: 'backoffice_service'
     depends_on:
       - symfony-app-database
       - rabbitmq
@@ -81,6 +88,7 @@ services:
     working_dir: "/data/app"
     environment:
       DATABASE_URL: mysql://admin:hash@laravel-app-database/laravel_app
+      APP_INSTALL_DEPENDENCIES: true
     networks:
       - default
     ports:
