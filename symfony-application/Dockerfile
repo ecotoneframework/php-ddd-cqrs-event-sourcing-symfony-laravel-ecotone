@@ -18,5 +18,3 @@ RUN apt-get update && apt-get install bash-completion \
     && COMPOSER_HOME=~/.composer composer global require bamarni/symfony-console-autocomplete\
     && echo PATH=$PATH:/root/.composer/vendor/bin/:/data/app/bin >> /root/.bashrc \
     && echo 'eval "$(symfony-autocomplete)"' >> /root/.bashrc
-
-COPY . /data/app

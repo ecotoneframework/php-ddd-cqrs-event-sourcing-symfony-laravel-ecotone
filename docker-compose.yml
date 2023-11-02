@@ -18,6 +18,8 @@ services:
       APP_INSTALL_DEPENDENCIES: "true"
       OTEL_SDK_DISABLED: 'false'
       OTEL_SERVICE_NAME: 'backoffice_service'
+      COMPOSER_HOME: /data/app
+      COMPOSE_HTTP_TIMEOUT: 9999
     depends_on:
       - symfony-app-database
       - rabbitmq
@@ -89,6 +91,8 @@ services:
     environment:
       DATABASE_URL: mysql://admin:hash@laravel-app-database/laravel_app
       APP_INSTALL_DEPENDENCIES: true
+      COMPOSER_HOME: /data/app
+      COMPOSE_HTTP_TIMEOUT: 9999
     networks:
       - default
     ports:
