@@ -4,7 +4,7 @@
 
 - To provide a simple example of how to implement `Domain Driven Design` and `Messaging Architecture` in PHP.  
 - To show how to implement `CQRS`, `Event Sourcing` and `Hexagonal Architecture` in PHP.
-- To show how to implement `Resilient`, `Observable` `Microservices` in PHP.
+- To show how to implement `Resilient` and `Observable` `Microservices` in PHP.
 
 # Why PHP?
 
