@@ -51,8 +51,8 @@ Any issue that happens in the system is reported to `Ecotone Pulse`, which is us
 
 Run `docker-compose up -d` to start all services.  
 
-Go to [customer_service](http://localhost:3000/) to report issue as a customer.   
-Whenever issue is reported, confirming email will be sent to the customer, which can be found [mailbox](http://localhost:3004/).   
+Go to [Customer Service](http://localhost:3000/) to report issue as a customer.   
+Whenever issue is reported, confirming email will be sent to the customer, which can be found [Mailbox](http://localhost:3004/).   
 First time email is sent it's set up for failing, so you can get feeling of working with system that can recover from error messages using [Ecotone Pulse](http://localhost:3006/service/customer_service).  
-From [back-office](http://localhost:3001/prepared-tickets) you may start working on ticket, that was correlated with issue reported by customer.  
+From [Backoffice Service](http://localhost:3001/prepared-tickets) you may start working on ticket, that was correlated with issue reported by customer.  
 You may also check [Jaeger](http://localhost:3007/) to get full overview of how communication looks like and how each component behave and what is happening.
