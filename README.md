@@ -1,19 +1,27 @@
 # This Project is Tribute to Domain Driven Design and Messaging Architecture
 
-## Objectives
+# Objectives
 
 - To provide a simple example of how to implement `Domain Driven Design` and `Messaging Architecture` in PHP.  
 - To show how to implement `CQRS`, `Event Sourcing` and `Hexagonal Architecture` in PHP.
 - To show how to implement `Resilient`, `Observable` `Microservices` in PHP.
 
-## Why PHP?
+# Why PHP?
 
 I am [Dariusz Gafka](https://medium.com/@dariuszgafka) author of [Ecotone Framework](https://docs.ecotone.tech/), which is PHP Framework for building resilient, business oriented system in PHP.    
 And my aim is to show that no matter of how complex your business is, you can build it in PHP.    
 The current tooling is good, yet it can be much better and by joining `Ecotone` with frameworks like `Symfony` or `Laravel`, we can push PHP to the next level.
 And really no matter if you work in `E-Commerce`, `ERP` or `Finance based systems`, you can build using `Open-Source in PHP` and be sure that it will be resilient, observable and maintainable.
 
-## Stack
+# Why Ecotone?
+
+Ecotone is production ready PHP Framework for building resilient, business oriented systems in PHP.    
+It provides you with all the tools you need to build `Domain Driven Design`, `CQRS`, `Event Sourcing` and `Hexagonal Architecture` in PHP.    
+It integrates with `Symfony` and `Laravel` and allows you to connect Services seamlessly using `Microservices` / `Event-Driven Architecture` like approach.  
+It's built continuously from `2017` and used in production by many companies.  
+By providing `resiliency` and `observability`, it provides highest level of confidence for building system in any business domain.
+
+# Stack
 
 - [Ecotone](https://docs.ecotone.tech/) - PHP Framework for building resilient, business oriented system in PHP
 - [Symfony](https://symfony.com/) - PHP Framework for building web applications
@@ -22,7 +30,7 @@ And really no matter if you work in `E-Commerce`, `ERP` or `Finance based system
 - [Ecotone Pulse](https://docs.ecotone.tech/modules/ecotone-pulse) - Monitor for any processing errors and recover from failed messages.
 - [Jaeger](https://www.jaegertracing.io/) - Distributed Tracing for monitoring and troubleshooting microservices-based distributed systems
 
-## Business Domain
+# Business Domain
 
 `Laravel+Ecotone application` is `Customer Service`, where customers can report issues. This happens using `CQRS` combined with `Eloquent Models`.  
 ![Laravel CQRS](documentation/customer-service.png "Laravel CQRS")  
