@@ -1,6 +1,5 @@
-FROM simplycodedsoftware/nginx-php:8.1
+FROM simplycodedsoftware/nginx-php:8.1.25
 
-ENV APP_INSTALL_DEPENDENCIES "yes"
 ENV COMPOSER_HOME /data/app
 ENV COMPOSE_HTTP_TIMEOUT 9999
 

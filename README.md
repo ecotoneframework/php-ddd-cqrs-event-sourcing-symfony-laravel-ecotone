@@ -1,68 +1,52 @@
-# PHP Applications using DDD CQRS Event Sourcing Symfony, Laravel powered by Ecotone
+# This Project is Tribute to Domain Driven Design and Messaging Architecture
 
-![alt text](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "PHP Application using DDD CQRS Event Sourcing Symfony with Hexagonal Architecture")
+## Objectives
 
-Demo provides two `PHP Microservices` collaborating with each over [RabbitMQ](https://www.rabbitmq.com/).   
-First Microservice is using `Symfony CQRS DDD Aggregates with Doctrine ORM and Event Sourcing` backed by [Prooph](http://getprooph.org/), modeled in Hexagonal Architecture.  
-Second Microservice is using `Laravel, DDD Aggregates with Eloquent and asynchronous event handling`.   
-Each service is powered by [Ecotone Framework](https://github.com/ecotoneFramework/ecotone)   
+- To provide a simple example of how to implement `Domain Driven Design` and `Messaging Architecture` in PHP.  
+- To show how to implement `CQRS`, `Event Sourcing` and `Hexagonal Architecture` in PHP.
+- To show how to implement `Resilient`, `Observable` `Microservices` in PHP.
 
-# Business usage
+## Why PHP?
 
-Laravel application is Customer Service, where customers can report issues.  
-![Laravel CQRS](documentation/customer-service.png "Laravel CQRS")
-Whenever new issue is reported, email is send to the customer confirming, that Customer Service is now working on it.  
+I am [Dariusz Gafka](https://medium.com/@dariuszgafka) author of [Ecotone Framework](https://docs.ecotone.tech/), which is PHP Framework for building resilient, business oriented system in PHP.    
+And my aim is to show that no matter of how complex your business is, you can build it in PHP.    
+The current tooling is good, yet it can be much better and by joining `Ecotone` with frameworks like `Symfony` or `Laravel`, we can push PHP to the next level.
+And really no matter if you work in `E-Commerce`, `ERP` or `Finance based systems`, you can build using `Open-Source in PHP` and be sure that it will be resilient, observable and maintainable.
+
+## Stack
+
+- [Ecotone](https://docs.ecotone.tech/) - PHP Framework for building resilient, business oriented system in PHP
+- [Symfony](https://symfony.com/) - PHP Framework for building web applications
+- [Laravel](https://laravel.com/) - PHP Framework for building web applications
+- [RabbitMQ](https://www.rabbitmq.com/) - Message Broker for asynchronous communication
+- [Ecotone Pulse](https://docs.ecotone.tech/modules/ecotone-pulse) - Monitor for any processing errors and recover from failed messages.
+- [Jaeger](https://www.jaegertracing.io/) - Distributed Tracing for monitoring and troubleshooting microservices-based distributed systems
+
+## Business Domain
+
+`Laravel+Ecotone application` is `Customer Service`, where customers can report issues. This happens using `CQRS` combined with `Eloquent Models`.  
+![Laravel CQRS](documentation/customer-service.png "Laravel CQRS")  
+Whenever new issue is reported, email is send to the with confirmation. This happens using `Asynchronous Event Handlers`, which are backed by `RabbitMQ`.     
 ![Laravel asynchronous event handling](documentation/issue-reported.png "Laravel asynchronous events")
 
-Symfony application provides Backoffice, where we may register employees. 
-In Backoffice customer issues are correlated with tickets and employees are responsible for handling them.  
+`Symfony+Ecotone application` provides `Backoffice Service`, place where employees can be registered.
+All issues reported by customers are synchronized to `Backoffice Service` and are correlated with tickets.  
+The synchronization between `Customer Service` and `Backoffice Service` is done using `Events` and `Distributed Bus` for cross service communication via `RabbitMQ`.  
 ![Symfony Microservice](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "Symfony Microservice")
-Employee that works on the tickets provides information about the status.
-When ticket is finished, it's closed with summary.   
+Employees can work on the tickets provides information about the status. As we want to know full history, Tickets are `Event-Sourced`.    
+From Event Sourced tickets we build different `Read Model Projections`, which are used to display information about the ticket.  
 
-After ticket is closed, correlated issue from Customer Service is also closed and summary email is sent to the customer.  
+The whole communication between Services is monitored and traced using [OpenTelemetry](https://opentelemetry.io/) with `Jaeger`.  
+Any issue that happens in the system is reported to `Ecotone Pulse`, which is used to recover from failed messages.  
 
 # Playing with the demo
 
-Go to `customer_service` (laravel application) [http://localhost:3000/](link) to report issue as a customer.
-After reporting the issue as the customer it will be synchronized to `backoffice_service` (symfony application) [http://localhost:3001/prepared-tickets](link).  
-Whenever issue is reported, confirming email will be sent to the customer [http://localhost:3004/](link).   
-First time email is send however, it's set up for failing, so you may retry it directly from [Ecotone Pulse](https://docs.ecotone.tech/modules/ecotone-pulse) [http://localhost:3006/service/customer_service](link)  
-
-# Access applications
-
-- [Customer Service - Laravel](http://localhost:3000)  
-- [Backoffice - Symfony](http://localhost:3001)  
-- [Ecotone Pulse](http://localhost:3006)
-- [Mail Server](http://localhost:3004)
-- [RabbitMQ Management Console](http://localhost:3005)
-
-# Quick start to get familiar with concepts
-
-* [Symfony and Doctrine ORM as Aggregates](https://blog.ecotone.tech/build-symfony-application-with-ease-using-ecotone/)
-* [Laravel and Eloquent as Aggregates](https://blog.ecotone.tech/build-laravel-application-using-ddd-and-cqrs/)
-* [How to implement CQRS](https://blog.ecotone.tech/cqrs-in-php/)
-* [How to implement Event Handling](https://blog.ecotone.tech/event-handling-in-php/)
-* [How to handle Asynchronicity](https://blog.ecotone.tech/asynchronous-php/)
-* [How to implement Event Sourcing](https://blog.ecotone.tech/implementing-event-sourcing-php-application-in-15-minutes/)
-* [Integrating Microservices](https://blog.ecotone.tech/how-to-integrate-microservices-in-php/)
+Go to [customer_service](http://localhost:3000/) to report issue as a customer.   
+Whenever issue is reported, confirming email will be sent to the customer, which can be found [mailbox](http://localhost:3004/).   
+First time email is sent it's set up for failing, so you can get feeling of working with system that can recover from error messages using [Ecotone Pulse](http://localhost:3006/service/customer_service).  
+From [back-office](http://localhost:3001/prepared-tickets) you may start working on ticket, that was correlated with issue reported by customer.  
+You may also check [Jaeger](http://localhost:3007/) to get full overview of how communication looks like and how each component behave and what is happening.
 
 # Run using docker-compose
 
-Run `docker-compose up -d`
-
-Shell:
-```shell
-make start  # Starts the containers. `make docker_up_detached` would run it in detached (-d) mode.
-make help   # To see the available usage command
-make [tab]  # For autocomplete
-make sh     # to login to the bash of the app container
-# Inside the container
-console [tab] # To get all the Symfony's available commands including Ecotone ones
-exit
-# Outside the container
-make db_sql # To access the PostgreSQL command CLI on the database container
-make stop   # To stop the containers and their networks (keep their volumes and images)
-make reset  # To remove the containers, their networks, their volumes for then restarting from scratch
-make clean  # To remove everything from Docker and let your computer as if you never used this repo
-```
+Run `docker-compose up -d` to start all services.

@@ -15,7 +15,7 @@ services:
       DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
       RUN_MIGRATION: "true"
-      APP_INSTALL_DEPENDENCIES: "true"
+      APP_INSTALL_DEPENDENCIES: "yes"
       OTEL_SDK_DISABLED: 'false'
       OTEL_SERVICE_NAME: 'backoffice_service'
       COMPOSER_HOME: /data/app
@@ -90,7 +90,7 @@ services:
     working_dir: "/data/app"
     environment:
       DATABASE_URL: mysql://admin:hash@laravel-app-database/laravel_app
-      APP_INSTALL_DEPENDENCIES: true
+      APP_INSTALL_DEPENDENCIES: "yes"
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
     networks:
@@ -167,3 +167,9 @@ services:
       AMQP_DSN: "amqp://guest:guest@rabbitmq:5672//"
     ports:
       - 3006:80
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    networks:
+      - default
+    ports:
+      - 3007:16686
