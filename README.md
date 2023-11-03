@@ -15,7 +15,7 @@ And really no matter if you work in `E-Commerce`, `ERP` or `Finance based system
 
 # Why Ecotone?
 
-Ecotone is production ready PHP Framework for building resilient, business oriented systems in PHP.    
+[Ecotone is production ready PHP Framework](https://medium.com/dev-genius/building-reactive-message-driven-systems-in-php-ba185697becf) for building resilient, business oriented systems in PHP.    
 It provides you with all the tools you need to build `Domain Driven Design`, `CQRS`, `Event Sourcing` and `Hexagonal Architecture` in PHP.    
 It integrates with `Symfony` and `Laravel` and allows you to connect Services seamlessly using `Microservices` / `Event-Driven Architecture` like approach.  
 It's built continuously from `2017` and used in production by many companies.  
