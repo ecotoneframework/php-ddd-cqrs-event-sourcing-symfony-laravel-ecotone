@@ -47,7 +47,7 @@ From Event Sourced tickets we build different `Read Model Projections`, which ar
 The whole communication between Services is monitored and traced using [OpenTelemetry](https://opentelemetry.io/) with `Jaeger`.  
 Any issue that happens in the system is reported to `Ecotone Pulse`, which is used to recover from failed messages.  
 
-# Playing with the demo
+# Playing with the demo 
 
 Run `docker-compose up -d` to start all services.  
 
