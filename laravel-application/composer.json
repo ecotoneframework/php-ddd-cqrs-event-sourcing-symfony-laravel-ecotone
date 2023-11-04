@@ -6,14 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^8.1.0",
+        "ecotone/amqp": "^1.203.4",
+        "ecotone/dbal": "^1.203.4",
+        "ecotone/jms-converter": "^1.203.4",
+        "ecotone/laravel": "^1.203.4",
+        "ecotone/open-telemetry": "^1.203.4",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "ecotone/laravel": "^1.44.0",
-        "ecotone/amqp": "^1.44.0",
-        "ecotone/jms-converter": "^1.44.0",
-        "ecotone/dbal": "^1.44.0"
+        "open-telemetry/exporter-otlp": "^1.0",
+        "open-telemetry/transport-grpc": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -58,7 +61,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

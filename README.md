@@ -10,16 +10,16 @@
 
 I am [Dariusz Gafka](https://medium.com/@dariuszgafka) author of [Ecotone Framework](https://docs.ecotone.tech/), which is PHP Framework for building resilient, business oriented system in PHP.    
 And my aim is to show that no matter of how complex your business is, you can build it in PHP.    
-The current tooling is good, yet it can be much better and by joining `Ecotone` with frameworks like `Symfony` or `Laravel`, we can push PHP to the next level.
-And really no matter if you work in `E-Commerce`, `ERP` or `Finance based systems`, you can build using `Open-Source in PHP` and be sure that it will be resilient, observable and maintainable.
+With existing frameworks like `Symfony` or `Laravel` joined with `Ecotone`, we can push PHP to the next level.
+And it does not matter if we work in `E-Commerce`, `ERP` or `Finance based systems`, we can be sure that system will scale and will be resilient, observable and maintainable.
 
 # Why Ecotone?
 
 [Ecotone is production ready PHP Framework](https://medium.com/dev-genius/building-reactive-message-driven-systems-in-php-ba185697becf) for building resilient, business oriented systems in PHP.    
 It provides you with all the tools you need to build `Domain Driven Design`, `CQRS`, `Event Sourcing` and `Hexagonal Architecture` in PHP.    
-It integrates with `Symfony` and `Laravel` and allows you to connect Services seamlessly using `Microservices` / `Event-Driven Architecture` like approach.  
+It integrates with `Symfony` and `Laravel` and allows you to connect Services seamlessly using `Microservice` or `Event-Driven` architecture.  
 It's built continuously from `2017` and used in production by many companies.  
-By providing `resiliency` and `observability`, it provides highest level of confidence for building system in any business domain.
+By providing `clean framework separation`, `resiliency` and `observability`, it provides highest level of confidence for building system in any business domain.
 
 # Stack
 
@@ -28,7 +28,7 @@ By providing `resiliency` and `observability`, it provides highest level of conf
 - [Laravel](https://laravel.com/) - PHP Framework for building web applications
 - [RabbitMQ](https://www.rabbitmq.com/) - Message Broker for asynchronous communication
 - [Ecotone Pulse](https://docs.ecotone.tech/modules/ecotone-pulse) - Monitor for any processing errors and recover from failed messages.
-- [Jaeger](https://www.jaegertracing.io/) - Distributed Tracing for monitoring and troubleshooting microservices-based distributed systems
+- [OpenTelemetry with Jaeger](https://www.jaegertracing.io/) - Distributed Tracing for monitoring and troubleshooting microservices-based distributed systems
 
 # Business Domain
 

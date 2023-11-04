@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use Ecotone\Dbal\DbalConnection;
+use Ecotone\OpenTelemetry\Support\JaegerTracer;
 use Enqueue\AmqpExt\AmqpConnectionFactory;
 use Enqueue\Dbal\DbalConnectionFactory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use OpenTelemetry\API\Trace\TracerProviderInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->singleton(DbalConnectionFactory::class, function () {
             return DbalConnection::create(DB::connection()->getDoctrineConnection());
+        });
+        $this->app->singleton(TracerProviderInterface::class, function () {
+            return JaegerTracer::create('http://jaeger:4317');
         });
     }
 

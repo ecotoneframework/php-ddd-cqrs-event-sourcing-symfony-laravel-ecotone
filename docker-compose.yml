@@ -91,6 +91,8 @@ services:
     environment:
       DATABASE_URL: mysql://admin:hash@laravel-app-database/laravel_app
       APP_INSTALL_DEPENDENCIES: "yes"
+      OTEL_SDK_DISABLED: 'false'
+      OTEL_SERVICE_NAME: 'customer_service'
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
     networks:
@@ -107,6 +109,9 @@ services:
     volumes:
       - "$PWD/laravel-application:/data/app"
     working_dir: "/data/app"
+    environment:
+      OTEL_SDK_DISABLED: 'false'
+      OTEL_SERVICE_NAME: 'customer_service'
     networks:
       - default
     restart: always
@@ -122,6 +127,9 @@ services:
     volumes:
       - "$PWD/laravel-application:/data/app"
     working_dir: "/data/app"
+    environment:
+      OTEL_SDK_DISABLED: 'false'
+      OTEL_SERVICE_NAME: 'customer_service'
     networks:
       - default
     restart: always
@@ -169,6 +177,8 @@ services:
       - 3006:80
   jaeger:
     image: jaegertracing/all-in-one:latest
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
     networks:
       - default
     ports:
