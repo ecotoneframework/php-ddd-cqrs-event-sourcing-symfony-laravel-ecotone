@@ -34,36 +34,37 @@ By providing `clean framework separation`, `resiliency` and `observability`, it 
 
 ## Customer Service
 
-`Customer Service` is `Laravel+Ecotone application`, where customers can report issues. This happens using `CQRS` combined with `Eloquent Models`.  
+- `Customer Service` is `Laravel+Ecotone application`, where customers can report issues. This happens using `CQRS` combined with `Eloquent Models`.  
 
 ![Laravel CQRS](documentation/customer-service.png "Laravel CQRS") 
 
 ------
 
-Whenever new issue is reported, email is send to the with confirmation. This happens using `Asynchronous Event Handlers`, which are backed by `RabbitMQ`.
+- Whenever new issue is reported, email is send to the with confirmation. This happens using `Asynchronous Event Handlers`, which are backed by `RabbitMQ`.
 
 ![Laravel asynchronous event handling](documentation/issue-reported.png "Laravel asynchronous events")
 
 ## Backoffice Service
 
-`Backoffice Service` is `Symfony+Ecotone application`, where employees can be registered and work on the tickets.  
+- `Backoffice Service` is `Symfony+Ecotone application`, where employees can be registered and work on the tickets.  
 All issues reported by customers are synchronized to `Backoffice Service` and are correlated with tickets.  
 The synchronization between `Customer Service` and `Backoffice Service` is done using `Events` and `Distributed Bus` for cross service communication via `RabbitMQ`.  
+
 ![Symfony Microservice](documentation/ddd-cqrs-event-sourcing-php-hexagonal-architecture.png "Symfony Microservice")  
 
 ------
 
-Employees can work on the tickets provides information about the status. As we want to know full history, Tickets are `Event-Sourced`.    
+- Employees can work on the tickets provides information about the status. As we want to know full history, Tickets are `Event-Sourced`.    
 From Event Sourced tickets we build different `Read Model Projections`, which are used to display information about the ticket.  
 
 ## Tracing and Monitoring
 
-The whole communication between Services is monitored and traced using [OpenTelemetry](https://opentelemetry.io/) with `Jaeger`.    
+- The whole communication between Services is monitored and traced using [OpenTelemetry](https://opentelemetry.io/) with `Jaeger`.    
 ![OpenTelemetry Jaeger](documentation/tracing_jaeger_php.png "OpenTelemetry Tracing in PHP with Jaeger")  
 
 ------
 
-Any issue that happens in the system is reported to `Ecotone Pulse`, which is used to recover from failed messages.  
+- Any issue that happens in the system is reported to `Ecotone Pulse`, which is used to recover from failed messages.  
 ![Ecotone Pulse](documentation/ecotone_pulse.png "Ecotone Pulse")
 
 # Playing with the demo 
