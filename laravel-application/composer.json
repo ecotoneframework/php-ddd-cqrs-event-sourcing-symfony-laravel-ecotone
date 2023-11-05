@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.1.0",
+        "php": "^8.2",
         "ecotone/amqp": "^1.203.4",
         "ecotone/dbal": "^1.203.4",
         "ecotone/jms-converter": "^1.203.4",
@@ -15,8 +15,8 @@
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "open-telemetry/exporter-otlp": "^1.0",
-        "open-telemetry/transport-grpc": "^1.0"
+        "open-telemetry/exporter-otlp": "*",
+        "open-telemetry/transport-grpc": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

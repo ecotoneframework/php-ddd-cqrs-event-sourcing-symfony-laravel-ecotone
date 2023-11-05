@@ -1,4 +1,4 @@
-FROM simplycodedsoftware/nginx-php:8.1.25
+FROM simplycodedsoftware/nginx-php:8.2.27
 
 ENV COMPOSER_HOME /data/app
 ENV COMPOSE_HTTP_TIMEOUT 9999
