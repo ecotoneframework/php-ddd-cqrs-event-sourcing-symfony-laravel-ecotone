@@ -7,8 +7,6 @@ services:
     volumes:
       - "$PWD/backoffice-service:/data/app"
     working_dir: "/data/app"
-    entrypoint: ""
-    command: "sleep 9999"
     networks:
       - default
     environment:
