@@ -38,3 +38,7 @@ services:
         class: Enqueue\AmqpExt\AmqpConnectionFactory
         arguments:
             - "amqp://guest:guest@rabbitmq:5672//"
+
+    OpenTelemetry\API\Trace\TracerProviderInterface:
+        class: OpenTelemetry\API\Globals
+        factory: [ 'OpenTelemetry\API\Globals', 'tracerProvider' ]

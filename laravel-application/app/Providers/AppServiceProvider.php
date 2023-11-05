@@ -8,6 +8,7 @@ use Enqueue\AmqpExt\AmqpConnectionFactory;
 use Enqueue\Dbal\DbalConnectionFactory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use OpenTelemetry\API\Globals;
 use OpenTelemetry\API\Trace\TracerProviderInterface;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
             return DbalConnection::create(DB::connection()->getDoctrineConnection());
         });
         $this->app->singleton(TracerProviderInterface::class, function () {
-            return JaegerTracer::create('http://jaeger:4317');
+            return Globals::tracerProvider();
         });
     }
 

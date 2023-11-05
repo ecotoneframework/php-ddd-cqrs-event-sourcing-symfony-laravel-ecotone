@@ -16,9 +16,16 @@ services:
       RABBIT_HOST: "rabbitmq"
       RUN_MIGRATION: "true"
       APP_INSTALL_DEPENDENCIES: "yes"
-      OTEL_SERVICE_NAME: 'backoffice_service'
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
+      OTEL_SERVICE_NAME: 'backoffice_service'
+      OTEL_PHP_AUTOLOAD_ENABLED: true
+      OTEL_TRACES_EXPORTER: otlp
+      OTEL_METRICS_EXPORTER: otlp
+      OTEL_LOGS_EXPORTER: otlp
+      OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
+      OTEL_PROPAGATORS: baggage,tracecontext
     depends_on:
       - symfony-app-database
       - rabbitmq
@@ -41,6 +48,13 @@ services:
       DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
       OTEL_SERVICE_NAME: 'backoffice_service'
+      OTEL_PHP_AUTOLOAD_ENABLED: true
+      OTEL_TRACES_EXPORTER: otlp
+      OTEL_METRICS_EXPORTER: otlp
+      OTEL_LOGS_EXPORTER: otlp
+      OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
+      OTEL_PROPAGATORS: baggage,tracecontext
     depends_on:
       - symfony-app-database
       - rabbitmq
@@ -64,6 +78,13 @@ services:
       DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
       OTEL_SERVICE_NAME: 'backoffice_service'
+      OTEL_PHP_AUTOLOAD_ENABLED: true
+      OTEL_TRACES_EXPORTER: otlp
+      OTEL_METRICS_EXPORTER: otlp
+      OTEL_LOGS_EXPORTER: otlp
+      OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
+      OTEL_PROPAGATORS: baggage,tracecontext
     depends_on:
       - symfony-app-database
       - rabbitmq
@@ -88,9 +109,16 @@ services:
     environment:
       DATABASE_URL: mysql://admin:hash@laravel-app-database/laravel_app
       APP_INSTALL_DEPENDENCIES: "yes"
-      OTEL_SERVICE_NAME: 'customer_service'
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
+      OTEL_SERVICE_NAME: 'customer_service'
+      OTEL_PHP_AUTOLOAD_ENABLED: true
+      OTEL_TRACES_EXPORTER: otlp
+      OTEL_METRICS_EXPORTER: otlp
+      OTEL_LOGS_EXPORTER: otlp
+      OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
+      OTEL_PROPAGATORS: baggage,tracecontext
     networks:
       - default
     ports:
@@ -107,6 +135,13 @@ services:
     working_dir: "/data/app"
     environment:
       OTEL_SERVICE_NAME: 'customer_service'
+      OTEL_PHP_AUTOLOAD_ENABLED: true
+      OTEL_TRACES_EXPORTER: otlp
+      OTEL_METRICS_EXPORTER: otlp
+      OTEL_LOGS_EXPORTER: otlp
+      OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
+      OTEL_PROPAGATORS: baggage,tracecontext
     networks:
       - default
     restart: always
@@ -124,6 +159,13 @@ services:
     working_dir: "/data/app"
     environment:
       OTEL_SERVICE_NAME: 'customer_service'
+      OTEL_PHP_AUTOLOAD_ENABLED: true
+      OTEL_TRACES_EXPORTER: otlp
+      OTEL_METRICS_EXPORTER: otlp
+      OTEL_LOGS_EXPORTER: otlp
+      OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
+      OTEL_PROPAGATORS: baggage,tracecontext
     networks:
       - default
     restart: always
