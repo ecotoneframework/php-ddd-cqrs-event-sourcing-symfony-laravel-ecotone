@@ -8,10 +8,10 @@
 
 # Why PHP?
 
-I am [Dariusz Gafka](https://medium.com/@dariuszgafka) author of [Ecotone Framework](https://docs.ecotone.tech/), which is PHP Framework for building resilient, business oriented system in PHP.    
-And my aim is to show that no matter of how complex your business is, you can build it in PHP.    
-With existing frameworks like `Symfony` or `Laravel` joined with `Ecotone`, we can push PHP to the next level.
-And it does not matter if we work in `E-Commerce`, `ERP` or `Finance based systems`, we can be sure that system will scale and will be resilient, observable and maintainable.
+Hello traveler, I am [Dariusz Gafka](https://medium.com/@dariuszgafka) author of [Ecotone Framework](https://docs.ecotone.tech/).  
+I would like to show you with this project that no matter of how complex your business is, you can build it in PHP.  
+It does not really matter if we work in `E-Commerce`, `ERP` or `Finance based systems`, we can be sure that system will be resilient, observable and maintainable in long term.  
+And to make it happen we will use `Open-Source` frameworks only, like `Symfony` or `Laravel` joined with `Ecotone`.  
 
 # Why Ecotone?
 
