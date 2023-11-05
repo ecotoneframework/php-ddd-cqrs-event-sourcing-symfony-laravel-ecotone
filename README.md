@@ -1,4 +1,4 @@
-# This Project is Tribute to Domain Driven Design and Messaging Architecture
+# Resilient Message-Driven Systems with Ecotone Framework
 
 # Objectives
 
