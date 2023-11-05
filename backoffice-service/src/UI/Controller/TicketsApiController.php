@@ -6,6 +6,7 @@ use App\Domain\Ticket\Command\AssignTicket;
 use App\Domain\Ticket\Command\ReleaseTicket;
 use App\Domain\Ticket\Ticket;
 use Ecotone\Modelling\CommandBus;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,10 @@ class TicketsApiController
     #[Route("/tickets", methods: ["POST"])]
     public function prepare(Request $request): Response
     {
-        $this->commandBus->sendWithRouting(Ticket::PREPARE_TICKET_TICKET, $request->request->all());
+        $this->commandBus->sendWithRouting(
+            Ticket::PREPARE_TICKET_TICKET,
+            $request->request->all() + ["ticketId" => Uuid::uuid4()->toString()]
+        );
 
         return new RedirectResponse("/");
     }

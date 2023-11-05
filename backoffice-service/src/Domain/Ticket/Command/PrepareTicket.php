@@ -2,9 +2,12 @@
 
 namespace App\Domain\Ticket\Command;
 
-class PrepareTicket
+final readonly class PrepareTicket
 {
-    public readonly ?string $ticketId;
-    public readonly string $ticketType;
-    public readonly string $description;
+    public function __construct(
+        public ?string $ticketId = null,
+        public string $ticketType,
+        public string $description
+    )
+    {}
 }

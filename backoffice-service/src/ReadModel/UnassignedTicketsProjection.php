@@ -44,22 +44,28 @@ SQL
     public function onTicketWasPreperad(TicketWasPrepared $event) : void
     {
         $this->connection->insert(self::TABLE_NAME, [
-            "ticket_id" => $event->getTicketId(),
-            "ticket_type" => $event->getTicketType(),
-            "description" => $event->getDescription()
+            "ticket_id" => $event->ticketId,
+            "ticket_type" => $event->ticketType,
+            "description" => $event->description
         ]);
     }
 
     #[EventHandler(endpointId:"UnassignedTicketsProjection::onTicketWasCancelled")]
     public function onTicketWasCancelled(TicketWasCancelled $event) : void
     {
-        $this->connection->delete(self::TABLE_NAME, ["ticket_id" => $event->getTicketId()]);
+        $this->connection->delete(
+            self::TABLE_NAME,
+            ["ticket_id" => $event->ticketId]
+        );
     }
 
     #[EventHandler(endpointId:"UnassignedTicketsProjection::onTicketWasAssigned")]
     public function onTicketWasAssigned(TicketWasAssigned $event) : void
     {
-        $this->connection->delete(self::TABLE_NAME, ["ticket_id" => $event->getTicketId()]);
+        $this->connection->delete(
+            self::TABLE_NAME,
+            ["ticket_id" => $event->ticketId]
+        );
     }
 
     #[ProjectionInitialization]

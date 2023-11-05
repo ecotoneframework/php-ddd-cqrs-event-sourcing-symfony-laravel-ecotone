@@ -2,7 +2,7 @@
 
 namespace App\Models\Event;
 
-class IssueWasReported
+final readonly class IssueWasReported
 {
-    public function __construct(public readonly int $issueId) {}
+    public function __construct(public int $issueId) {}
 }

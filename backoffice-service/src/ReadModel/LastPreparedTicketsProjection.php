@@ -56,9 +56,9 @@ SQL
     public function onTicketWasPrepared(TicketWasPrepared $event, #[Header(MessageHeaders::TIMESTAMP)] $occurredOn) : void
     {
         $this->connection->insert(self::TABLE_NAME, [
-            "ticket_id" => $event->getTicketId(),
-            "ticket_type" => $event->getTicketType(),
-            "description" => $event->getDescription(),
+            "ticket_id" => $event->ticketId,
+            "ticket_type" => $event->ticketType,
+            "description" => $event->description,
             "status" => "awaiting",
             "prepared_at" => date('Y-m-d H:i:s', $occurredOn)
         ]);
@@ -67,13 +67,21 @@ SQL
     #[EventHandler(endpointId:"LastPreparedTicketsProjection::onTicketWasCancelled")]
     public function onTicketWasCancelled(TicketWasCancelled $event) : void
     {
-        $this->connection->update(self::TABLE_NAME, ["status" => "cancelled"], ["ticket_id" => $event->getTicketId()]);
+        $this->connection->update(
+            self::TABLE_NAME,
+            ["status" => "cancelled"],
+            ["ticket_id" => $event->ticketId]
+        );
     }
 
     #[EventHandler(endpointId:"LastPreparedTicketsProjection::onTicketWasAssigned")]
     public function onTicketWasAssigned(TicketWasAssigned $event) : void
     {
-        $this->connection->update(self::TABLE_NAME, ["status" => "assigned", "assigned_to" => $event->getAssignedTo()], ["ticket_id" => $event->getTicketId()]);
+        $this->connection->update(
+            self::TABLE_NAME,
+            ["status" => "assigned", "assigned_to" => $event->assignedTo],
+            ["ticket_id" => $event->ticketId]
+        );
     }
 
     #[ProjectionInitialization]

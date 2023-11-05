@@ -56,16 +56,16 @@ class Ticket
             return [];
         }
         if ($this->isCancelled) {
-            throw new InvalidArgumentException("Can't assign {$command->getAssignedTo()} as this ticket has assignation");
+            throw new InvalidArgumentException("Can't assign {$command->assignTo} as this ticket has assignation");
         }
 
-        return [new TicketWasAssigned($this->ticketId, $command->getAssignedTo())];
+        return [new TicketWasAssigned($this->ticketId, $command->assignTo)];
     }
 
     #[EventSourcingHandler]
     public function applyTicketWasPrepared(TicketWasPrepared $event): void
     {
-        $this->ticketId    = $event->getTicketId();
+        $this->ticketId    = $event->ticketId;
         $this->isCancelled = false;
         $this->isAssigned  = false;
     }
