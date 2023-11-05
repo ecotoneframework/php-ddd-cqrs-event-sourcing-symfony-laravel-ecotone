@@ -16,7 +16,6 @@ services:
       RABBIT_HOST: "rabbitmq"
       RUN_MIGRATION: "true"
       APP_INSTALL_DEPENDENCIES: "yes"
-      OTEL_SDK_DISABLED: 'false'
       OTEL_SERVICE_NAME: 'backoffice_service'
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
@@ -41,7 +40,6 @@ services:
       COMPOSE_HTTP_TIMEOUT: 9999
       DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
-      OTEL_SDK_DISABLED: 'false'
       OTEL_SERVICE_NAME: 'backoffice_service'
     depends_on:
       - symfony-app-database
@@ -65,7 +63,6 @@ services:
       COMPOSE_HTTP_TIMEOUT: 9999
       DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
-      OTEL_SDK_DISABLED: 'false'
       OTEL_SERVICE_NAME: 'backoffice_service'
     depends_on:
       - symfony-app-database
@@ -91,7 +88,6 @@ services:
     environment:
       DATABASE_URL: mysql://admin:hash@laravel-app-database/laravel_app
       APP_INSTALL_DEPENDENCIES: "yes"
-      OTEL_SDK_DISABLED: 'false'
       OTEL_SERVICE_NAME: 'customer_service'
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
@@ -110,7 +106,6 @@ services:
       - "$PWD/laravel-application:/data/app"
     working_dir: "/data/app"
     environment:
-      OTEL_SDK_DISABLED: 'false'
       OTEL_SERVICE_NAME: 'customer_service'
     networks:
       - default
@@ -128,7 +123,6 @@ services:
       - "$PWD/laravel-application:/data/app"
     working_dir: "/data/app"
     environment:
-      OTEL_SDK_DISABLED: 'false'
       OTEL_SERVICE_NAME: 'customer_service'
     networks:
       - default

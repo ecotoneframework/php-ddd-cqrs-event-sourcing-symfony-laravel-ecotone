@@ -38,7 +38,8 @@ class IssueSubscriber
         \Mail::to($issue->email)->send(new ClosedIssueMail($event->issueId));
     }
 
-    #[EventHandler]
+    #[Asynchronous(EcotoneConfiguration::NOTIFICATIONS_CHANNEL)]
+    #[EventHandler(endpointId: 'createTicketInBackofficeService')]
     public function createTicketInBackofficeService(IssueWasReported $event, DistributedBus $distributedBus): void
     {
         $issue = Issue::find($event->issueId);
