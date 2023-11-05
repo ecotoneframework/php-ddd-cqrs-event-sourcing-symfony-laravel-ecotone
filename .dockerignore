@@ -6,9 +6,9 @@ cache
 README.md
 .gitignore
 documentation
-symfony-application/vendor
-symfony-application/var
-symfony-application/cache
-laravel-application/vendor
-laravel-application/storage
-laravel-application/cache
+backoffice-service/vendor
+backoffice-service/var
+backoffice-service/cache
+customer-service/vendor
+customer-service/storage
+customer-service/cache

@@ -3,10 +3,10 @@
 /.env.local
 /.env.local.php
 /.env.*.local
-/symfony-application/config/secrets/prod/prod.decrypt.private.php
-/symfony-application/public/bundles/
-/symfony-application/var/
-/symfony-application/vendor/
+/backoffice-service/config/secrets/prod/prod.decrypt.private.php
+/backoffice-service/public/bundles/
+/backoffice-service/var/
+/backoffice-service/vendor/
 ###< symfony/framework-bundle ###
 cache
 .idea

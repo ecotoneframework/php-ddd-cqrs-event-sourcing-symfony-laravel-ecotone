@@ -1,18 +1,20 @@
 version: "3"
 
 services:
-  symfony-app-web-service:
+  backoffice-app-web-service:
     build:
-      context: symfony-application
+      context: backoffice-service
     volumes:
-      - "$PWD/symfony-application:/data/app"
+      - "$PWD/backoffice-service:/data/app"
     working_dir: "/data/app"
+    entrypoint: ""
+    command: "sleep 9999"
     networks:
       - default
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
+      DATABASE_DSN: pgsql://ecotone:secret@backoffice-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
       RUN_MIGRATION: "true"
       APP_INSTALL_DEPENDENCIES: "yes"
@@ -27,15 +29,15 @@ services:
       OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
       OTEL_PROPAGATORS: baggage,tracecontext
     depends_on:
-      - symfony-app-database
+      - backoffice-app-database
       - rabbitmq
     ports:
       - 3001:80
-  symfony-app-projections:
+  backoffice-app-projections:
     build:
-      context: symfony-application
+      context: backoffice-service
     volumes:
-      - "$PWD/symfony-application:/data/app"
+      - "$PWD/backoffice-service:/data/app"
     working_dir: "/data/app"
     user: 1000:1000
     networks:
@@ -45,7 +47,7 @@ services:
       APP_DEBUG: "true"
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
-      DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
+      DATABASE_DSN: pgsql://ecotone:secret@backoffice-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
       OTEL_SERVICE_NAME: 'backoffice_service'
       OTEL_PHP_AUTOLOAD_ENABLED: true
@@ -56,16 +58,16 @@ services:
       OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
       OTEL_PROPAGATORS: baggage,tracecontext
     depends_on:
-      - symfony-app-database
+      - backoffice-app-database
       - rabbitmq
     restart: always
     entrypoint: ""
     command: "/data/app/bin/console ecotone:run asynchronous_projections -vvv"
-  symfony-distributed-consumer:
+  backoffice-distributed-consumer:
     build:
-      context: symfony-application
+      context: backoffice-service
     volumes:
-      - "$PWD/symfony-application:/data/app"
+      - "$PWD/backoffice-service:/data/app"
     working_dir: "/data/app"
     user: 1000:1000
     networks:
@@ -75,7 +77,7 @@ services:
       APP_DEBUG: "true"
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
-      DATABASE_DSN: pgsql://ecotone:secret@symfony-app-database:5432/ecotone
+      DATABASE_DSN: pgsql://ecotone:secret@backoffice-app-database:5432/ecotone
       RABBIT_HOST: "rabbitmq"
       OTEL_SERVICE_NAME: 'backoffice_service'
       OTEL_PHP_AUTOLOAD_ENABLED: true
@@ -86,12 +88,12 @@ services:
       OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
       OTEL_PROPAGATORS: baggage,tracecontext
     depends_on:
-      - symfony-app-database
+      - backoffice-app-database
       - rabbitmq
     restart: always
     entrypoint: ""
     command: "/data/app/bin/console ecotone:run backoffice_service -vvv"
-  symfony-app-database:
+  backoffice-app-database:
     image: postgres:12.1
     networks:
       - default
@@ -100,14 +102,14 @@ services:
     environment:
       POSTGRES_USER: "ecotone"
       POSTGRES_PASSWORD: "secret"
-  laravel-app-web-service:
+  customer-app-web-service:
     build:
-      context: laravel-application
+      context: customer-service
     volumes:
-      - "$PWD/laravel-application:/data/app"
+      - "$PWD/customer-service:/data/app"
     working_dir: "/data/app"
     environment:
-      DATABASE_URL: mysql://admin:hash@laravel-app-database/laravel_app
+      DATABASE_URL: mysql://admin:hash@customer-app-database/customer_app
       APP_INSTALL_DEPENDENCIES: "yes"
       COMPOSER_HOME: /data/app
       COMPOSE_HTTP_TIMEOUT: 9999
@@ -124,14 +126,14 @@ services:
     ports:
       - "3000:80"
     depends_on:
-      - laravel-app-database
+      - customer-app-database
       - mailhog
       - rabbitmq
-  laravel-distributed-consumer:
+  customer-distributed-consumer:
     build:
-      context: laravel-application
+      context: customer-service
     volumes:
-      - "$PWD/laravel-application:/data/app"
+      - "$PWD/customer-service:/data/app"
     working_dir: "/data/app"
     environment:
       OTEL_SERVICE_NAME: 'customer_service'
@@ -148,14 +150,14 @@ services:
     entrypoint: ""
     command: "php artisan ecotone:run customer_service -vvv"
     depends_on:
-      - laravel-app-database
+      - customer-app-database
       - mailhog
       - rabbitmq
-  laravel-notifications-consumer:
+  customer-notifications-consumer:
     build:
-      context: laravel-application
+      context: customer-service
     volumes:
-      - "$PWD/laravel-application:/data/app"
+      - "$PWD/customer-service:/data/app"
     working_dir: "/data/app"
     environment:
       OTEL_SERVICE_NAME: 'customer_service'
@@ -172,14 +174,14 @@ services:
     entrypoint: ""
     command: "php artisan ecotone:run notifications -vvv"
     depends_on:
-      - laravel-app-database
+      - customer-app-database
       - mailhog
       - rabbitmq
-  laravel-app-database:
+  customer-app-database:
     image: 'mysql/mysql-server:8.0'
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel_app
+      MYSQL_DATABASE: customer_app
       MYSQL_USER: admin
       MYSQL_PASSWORD: hash
     ports:
@@ -207,7 +209,7 @@ services:
     networks:
       - default
     environment:
-      SERVICES: '[{"name":"customer_service","databaseDsn":"mysql://admin:hash@laravel-app-database/laravel_app"},{"name":"backoffice_service","databaseDsn":"pgsql://ecotone:secret@symfony-app-database:5432/ecotone"}]'
+      SERVICES: '[{"name":"customer_service","databaseDsn":"mysql://admin:hash@customer-app-database/customer_app"},{"name":"backoffice_service","databaseDsn":"pgsql://ecotone:secret@backoffice-app-database:5432/ecotone"}]'
       AMQP_DSN: "amqp://guest:guest@rabbitmq:5672//"
     ports:
       - 3006:80
