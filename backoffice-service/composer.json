@@ -22,13 +22,16 @@
         "open-telemetry/exporter-otlp": "*",
         "open-telemetry/opentelemetry-auto-symfony": "^1.0.0beta16",
         "open-telemetry/transport-grpc": "*",
-        "symfony/cache": "^5.4",
-        "symfony/console": "5.4.*",
+        "symfony/cache": "^5.4 || ^6.3",
+        "symfony/console": "^5.4 || ^6.3",
+        "symfony/dotenv": "^6.3",
         "symfony/flex": "^1.3.1",
-        "symfony/framework-bundle": "5.4.*",
-        "symfony/proxy-manager-bridge": "5.4.*",
-        "symfony/twig-bundle": "5.4.*",
-        "symfony/yaml": "5.4.*"
+        "symfony/framework-bundle": "^5.4 || ^6.3",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/proxy-manager-bridge": "^5.4 || ^6.3",
+        "symfony/runtime": "^6.3",
+        "symfony/twig-bundle": "^5.4 || ^6.3",
+        "symfony/yaml": "^5.4 || ^6.3"
     },
     "config": {
         "optimize-autoloader": true,
@@ -38,7 +41,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "symfony/flex": true,
-            "php-http/discovery": false
+            "php-http/discovery": false,
+            "symfony/runtime": true
         }
     },
     "autoload": {
@@ -75,7 +79,12 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.4.*"
+            "require": "^6.3"
         }
+    },
+    "require-dev": {
+        "symfony/debug-bundle": "^6.3",
+        "symfony/stopwatch": "^6.3",
+        "symfony/web-profiler-bundle": "^6.3"
     }
 }
