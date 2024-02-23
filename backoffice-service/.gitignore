@@ -9,4 +9,7 @@
 /vendor/
 .env
 symfony.lock
+compose.yaml
+compose.override.yaml
+src/*/.gitignore
 ###< symfony/framework-bundle ###

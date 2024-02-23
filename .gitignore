@@ -11,3 +11,4 @@
 cache
 .idea
 skaffold
+.DS_Store

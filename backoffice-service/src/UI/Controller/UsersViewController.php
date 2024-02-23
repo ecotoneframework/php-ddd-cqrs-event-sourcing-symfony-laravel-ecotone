@@ -2,7 +2,6 @@
 
 namespace App\UI\Controller;
 
-use App\ReadModel\LastPreparedTicketsProjection;
 use App\ReadModel\UsersQueryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

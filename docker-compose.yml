@@ -113,6 +113,7 @@ services:
       COMPOSE_HTTP_TIMEOUT: 9999
       OTEL_SERVICE_NAME: 'customer_service'
       OTEL_PHP_AUTOLOAD_ENABLED: true
+      OTEL_PHP_DEBUG_SCOPES_DISABLED: true
       OTEL_TRACES_EXPORTER: otlp
       OTEL_METRICS_EXPORTER: otlp
       OTEL_LOGS_EXPORTER: otlp

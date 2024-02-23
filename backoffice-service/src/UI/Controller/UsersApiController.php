@@ -3,7 +3,6 @@
 namespace App\UI\Controller;
 
 use App\Application\UserService;
-use App\Domain\Ticket\Ticket;
 use Ecotone\Modelling\CommandBus;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
