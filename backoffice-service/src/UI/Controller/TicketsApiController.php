@@ -2,7 +2,6 @@
 
 namespace App\UI\Controller;
 
-use App\Domain\Ticket\Command\AssignTicket;
 use App\Domain\Ticket\Command\ReleaseTicket;
 use App\Domain\Ticket\Ticket;
 use Ecotone\Modelling\CommandBus;
