@@ -6,20 +6,31 @@
 - To show how to implement `CQRS`, `Event Sourcing` and `Hexagonal Architecture` in PHP.
 - To show how to implement `Resilient` and `Observable` `Microservices` in PHP.
 
-# Why PHP?
-
-Hello traveler, I am [Dariusz Gafka](https://medium.com/@dariuszgafka) author of [Ecotone Framework](https://docs.ecotone.tech/).  
-With this project, I would like to show you that no matter of how complex your business is, you can build it in PHP.  
+# About
+  
 It does not really matter if we work in `E-Commerce`, `ERP` or `Finance based systems`, we can be sure that system will be resilient, observable and maintainable in long term.  
-And to make it happen we will use `Open-Source` frameworks only, like `Symfony` or `Laravel` joined with `Ecotone`.  
+And we can achieve using principles of `Message-Driven Systems` combined with `Domain Driven Design` using patterns like `CQRS`, `Event Sourcing` and `Service Bus` in PHP.  
+And to make it happen we will use `Ecotone Framework` combined with `Symfony` or `Laravel`.  
 
-# Why Ecotone?
+# What is Ecotone
 
-[Ecotone is production ready PHP Framework](https://medium.com/dev-genius/building-reactive-message-driven-systems-in-php-ba185697becf) for building resilient, business oriented systems in PHP.    
-It provides you with all the tools you need to build `Domain Driven Design`, `CQRS`, `Event Sourcing` and `Hexagonal Architecture` in PHP.    
-It integrates with `Symfony` and `Laravel` and allows you to connect Services seamlessly using `Microservice` or `Event-Driven` architecture.  
-It's built continuously from `2017` and used in production by many companies.  
-By providing `clean framework separation`, `resiliency` and `observability`, it provides highest level of confidence for building system in any business domain.
+[Ecotone is Message-Driven Framework](https://medium.com/dev-genius/building-reactive-message-driven-systems-in-php-ba185697becf) for building resilient, business oriented systems in PHP.
+Ecotone allows to build `Microservices` and `Event-Driven` systems in PHP with ease.  
+Thanks to foundation build around Message Driven Architecture, it allows to build `Resilient` and `Observable` systems in PHP.  
+On top of that it provides patterns from DDD like - `Aggregates`, `Domain Events`, `Projections`, `Sagas`, and more.
+Ecotone integrates with `Symfony` and `Laravel` and allows you to connect Services seamlessly using `Microservice` or `Event-Driven` architecture.
+
+In short Ecotone is a powerhouse to build reliable systems in PHP in a way that is maintainable, scalable and most importantly resilient.
+
+# Playing with the demo
+
+Run `docker-compose up -d` to start all services.
+
+Go to [Customer Service](http://localhost:3000/) to report issue as a customer.   
+Whenever issue is reported, confirming email will be sent to the customer, which can be found [Mailbox](http://localhost:3004/).   
+First time email is sent it's set up for failing, so you can get feeling of working with system that can recover from error messages using [Ecotone Pulse](http://localhost:3006/service/customer_service).  
+From [Backoffice Service](http://localhost:3001/prepared-tickets) you may start working on ticket, that was correlated with issue reported by customer.  
+You may also check [Jaeger](http://localhost:3007/) to get full overview of how communication looks like and how each component behave and what is happening.
 
 # Stack
 
@@ -66,13 +77,3 @@ From Event Sourced tickets we build different `Read Model Projections`, which ar
 
 - Any issue that happens in the system is reported to `Ecotone Pulse`, which is used to recover from failed messages.  
 ![Ecotone Pulse](documentation/ecotone_pulse.png "Ecotone Pulse")
-
-# Playing with the demo 
-
-Run `docker-compose up -d` to start all services.  
-
-Go to [Customer Service](http://localhost:3000/) to report issue as a customer.   
-Whenever issue is reported, confirming email will be sent to the customer, which can be found [Mailbox](http://localhost:3004/).   
-First time email is sent it's set up for failing, so you can get feeling of working with system that can recover from error messages using [Ecotone Pulse](http://localhost:3006/service/customer_service).  
-From [Backoffice Service](http://localhost:3001/prepared-tickets) you may start working on ticket, that was correlated with issue reported by customer.  
-You may also check [Jaeger](http://localhost:3007/) to get full overview of how communication looks like and how each component behave and what is happening.
