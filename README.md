@@ -8,7 +8,7 @@
 
 # Playing with the demo
 
-Run `docker-compose up -d` to start all services.
+Run `docker-compose up -d` to start all services, and wait for them to start `docker-compose logs -f`.
 
 This Demo provides two integrated Applications. 
 
