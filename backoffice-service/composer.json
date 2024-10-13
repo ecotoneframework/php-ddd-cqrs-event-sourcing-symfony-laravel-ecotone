@@ -14,11 +14,11 @@
         "doctrine/doctrine-bundle": "^2.11",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
-        "ecotone/amqp": "^1.229.1",
-        "ecotone/jms-converter": "^1.229.1",
-        "ecotone/open-telemetry": "^1.229.1",
-        "ecotone/pdo-event-sourcing": "^1.229.1",
-        "ecotone/symfony-bundle": "^1.229.1",
+        "ecotone/amqp": "^1.232.0",
+        "ecotone/jms-converter": "^1.232.0",
+        "ecotone/open-telemetry": "^1.232.0",
+        "ecotone/pdo-event-sourcing": "^1.232.0",
+        "ecotone/symfony-bundle": "^1.232.0",
         "open-telemetry/exporter-otlp": "*",
         "open-telemetry/opentelemetry-auto-symfony": "^1.0.0beta22",
         "open-telemetry/transport-grpc": "*",
@@ -41,7 +41,8 @@
         "allow-plugins": {
             "symfony/flex": true,
             "php-http/discovery": false,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "tbachert/spi": false
         }
     },
     "autoload": {
