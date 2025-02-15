@@ -134,6 +134,7 @@ services:
     volumes:
       - "./customer-service:/data/app"
     working_dir: "/data/app"
+    user: 1000:1000
     environment:
       OTEL_SERVICE_NAME: 'customer_service'
       OTEL_PHP_AUTOLOAD_ENABLED: true
@@ -158,6 +159,7 @@ services:
     volumes:
       - "./customer-service:/data/app"
     working_dir: "/data/app"
+    user: 1000:1000
     environment:
       OTEL_SERVICE_NAME: 'customer_service'
       OTEL_PHP_AUTOLOAD_ENABLED: true

@@ -3,6 +3,7 @@
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
+use Monolog\Processor\PsrLogMessageProcessor;
 
 return [
 
@@ -50,7 +51,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['stdout', 'stderr'],
             'ignore_exceptions' => false,
         ],
 
@@ -86,14 +87,26 @@ return [
             ],
         ],
 
+        'stdout' => [
+            'driver' => 'monolog',
+            'handler' => \Monolog\Handler\FilterHandler::class,
+            'formatter' => env('LOG_STDOUT_FORMATTER'),
+            'with' => [
+                'handler' => fn () => new StreamHandler('php://stdout'),
+                'minLevelOrList' => [Monolog\Level::Debug, Monolog\Level::Info],
+            ],
+            'processors' => [PsrLogMessageProcessor::class],
+        ],
+
         'stderr' => [
             'driver' => 'monolog',
-            'level' => env('LOG_LEVEL', 'debug'),
             'handler' => StreamHandler::class,
             'formatter' => env('LOG_STDERR_FORMATTER'),
             'with' => [
                 'stream' => 'php://stderr',
             ],
+            'level' => 'notice',
+            'processors' => [PsrLogMessageProcessor::class],
         ],
 
         'syslog' => [
