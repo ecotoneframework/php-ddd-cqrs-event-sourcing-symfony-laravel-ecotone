@@ -17,6 +17,10 @@ This Demo provides two integrated Applications.
 
 Services communicate with each other using `RabbitMQ` with `Ecotone's Distributed Bus`.  
 
+### If you do have problems running example, possibly you may need to fix file permissions
+
+> sudo chown -R YOUR_GROUP:YOUR_USER .
+
 ### Quickstart
 
 - To report issue as a customer, go to [Customer Service](http://localhost:3000/)    
