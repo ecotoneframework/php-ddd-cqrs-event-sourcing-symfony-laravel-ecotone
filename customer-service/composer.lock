@@ -939,20 +939,20 @@
         },
         {
             "name": "ecotone/amqp",
-            "version": "1.258.1",
+            "version": "1.259.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/amqp.git",
-                "reference": "331e2961bcf44e844f1957eb3f42c16253daf2f4"
+                "reference": "83e453b7dd0a652ec8d8d60dec27af42a8823cf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/amqp/zipball/331e2961bcf44e844f1957eb3f42c16253daf2f4",
-                "reference": "331e2961bcf44e844f1957eb3f42c16253daf2f4",
+                "url": "https://api.github.com/repos/ecotoneframework/amqp/zipball/83e453b7dd0a652ec8d8d60dec27af42a8823cf0",
+                "reference": "83e453b7dd0a652ec8d8d60dec27af42a8823cf0",
                 "shasum": ""
             },
             "require": {
-                "ecotone/enqueue": "~1.258.1",
+                "ecotone/enqueue": "~1.259.1",
                 "enqueue/amqp-ext": "^0.10.18",
                 "enqueue/dsn": "^0.10.4",
                 "enqueue/enqueue": "^0.10.0",
@@ -970,7 +970,7 @@
                     "repository": "amqp"
                 },
                 "branch-alias": {
-                    "dev-main": "1.258.1-dev"
+                    "dev-main": "1.259.1-dev"
                 },
                 "license-info": {
                     "Apache-2.0": {
@@ -988,7 +988,7 @@
                         "../local_packages.json"
                     ]
                 },
-                "release-time": "2025-06-14 20:19:47"
+                "release-time": "2025-06-15 14:21:20"
             },
             "autoload": {
                 "psr-4": {
@@ -1021,7 +1021,7 @@
                 "rabbitmq"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/amqp/tree/1.258.1"
+                "source": "https://github.com/ecotoneframework/amqp/tree/1.259.1"
             },
             "funding": [
                 {
@@ -1029,25 +1029,25 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-14T20:20:16+00:00"
+            "time": "2025-06-15T14:21:54+00:00"
         },
         {
             "name": "ecotone/dbal",
-            "version": "1.258.1",
+            "version": "1.259.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/dbal.git",
-                "reference": "35a7aa48eff55631dc9c144dd86aff9ba2a448a3"
+                "reference": "dea450d8d4ee8f121e5d457ba6bdb7dc55e018f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/dbal/zipball/35a7aa48eff55631dc9c144dd86aff9ba2a448a3",
-                "reference": "35a7aa48eff55631dc9c144dd86aff9ba2a448a3",
+                "url": "https://api.github.com/repos/ecotoneframework/dbal/zipball/dea450d8d4ee8f121e5d457ba6bdb7dc55e018f8",
+                "reference": "dea450d8d4ee8f121e5d457ba6bdb7dc55e018f8",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^3.9|^4.0",
-                "ecotone/enqueue": "~1.258.1",
+                "ecotone/enqueue": "~1.259.1",
                 "enqueue/dsn": "^0.10.4"
             },
             "conflict": {
@@ -1058,7 +1058,7 @@
                 "doctrine/cache": "^1.0.0|^2.0",
                 "doctrine/orm": "^2.11|^3.0",
                 "doctrine/persistence": "^2.5|^3.4",
-                "ecotone/jms-converter": "~1.258.1",
+                "ecotone/jms-converter": "~1.259.1",
                 "phpstan/phpstan": "^1.8",
                 "phpunit/phpunit": "^10.5|^11.0",
                 "symfony/expression-language": "^6.0|^7.0",
@@ -1070,7 +1070,7 @@
                     "repository": "dbal"
                 },
                 "branch-alias": {
-                    "dev-main": "1.258.1-dev"
+                    "dev-main": "1.259.1-dev"
                 },
                 "license-info": {
                     "Apache-2.0": {
@@ -1088,7 +1088,7 @@
                         "../local_packages.json"
                     ]
                 },
-                "release-time": "2025-06-14 20:19:47"
+                "release-time": "2025-06-15 14:21:20"
             },
             "autoload": {
                 "psr-4": {
@@ -1114,7 +1114,7 @@
                 "ecotone"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/dbal/tree/1.258.1"
+                "source": "https://github.com/ecotoneframework/dbal/tree/1.259.1"
             },
             "funding": [
                 {
@@ -1122,20 +1122,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-14T20:20:16+00:00"
+            "time": "2025-06-15T14:21:56+00:00"
         },
         {
             "name": "ecotone/ecotone",
-            "version": "1.258.1",
+            "version": "1.259.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/ecotone.git",
-                "reference": "ff4722ea593ee517d702cb6bf81fae5813ff8a6a"
+                "reference": "1809e53efca9d3c7df8bc0b471c1cc87f35bb9b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/ff4722ea593ee517d702cb6bf81fae5813ff8a6a",
-                "reference": "ff4722ea593ee517d702cb6bf81fae5813ff8a6a",
+                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/1809e53efca9d3c7df8bc0b471c1cc87f35bb9b2",
+                "reference": "1809e53efca9d3c7df8bc0b471c1cc87f35bb9b2",
                 "shasum": ""
             },
             "require": {
@@ -1157,7 +1157,7 @@
                     "repository": "ecotone"
                 },
                 "branch-alias": {
-                    "dev-main": "1.258.1-dev"
+                    "dev-main": "1.259.1-dev"
                 },
                 "license-info": {
                     "Apache-2.0": {
@@ -1175,7 +1175,7 @@
                         "../local_packages.json"
                     ]
                 },
-                "release-time": "2025-06-14 20:19:47"
+                "release-time": "2025-06-15 14:21:20"
             },
             "autoload": {
                 "psr-4": {
@@ -1206,7 +1206,7 @@
                 "service-bus"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/ecotone/tree/1.258.1"
+                "source": "https://github.com/ecotoneframework/ecotone/tree/1.259.1"
             },
             "funding": [
                 {
@@ -1214,24 +1214,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-14T20:20:17+00:00"
+            "time": "2025-06-15T14:21:57+00:00"
         },
         {
             "name": "ecotone/enqueue",
-            "version": "1.258.1",
+            "version": "1.259.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/enqueue.git",
-                "reference": "e515b4cdb67c0a5799832a20440978a4cf5d7192"
+                "reference": "0ed2fa76580eb8a2ea56609937273dd30a3e2631"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/e515b4cdb67c0a5799832a20440978a4cf5d7192",
-                "reference": "e515b4cdb67c0a5799832a20440978a4cf5d7192",
+                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/0ed2fa76580eb8a2ea56609937273dd30a3e2631",
+                "reference": "0ed2fa76580eb8a2ea56609937273dd30a3e2631",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.258.1",
+                "ecotone/ecotone": "~1.259.1",
                 "enqueue/dsn": "^0.10.4",
                 "queue-interop/queue-interop": "^0.8"
             },
@@ -1248,7 +1248,7 @@
                     "repository": "enqueue"
                 },
                 "branch-alias": {
-                    "dev-main": "1.258.1-dev"
+                    "dev-main": "1.259.1-dev"
                 },
                 "license-info": {
                     "Apache-2.0": {
@@ -1266,7 +1266,7 @@
                         "../local_packages.json"
                     ]
                 },
-                "release-time": "2025-06-14 20:19:47"
+                "release-time": "2025-06-15 14:21:20"
             },
             "autoload": {
                 "psr-4": {
@@ -1291,7 +1291,7 @@
                 "enqueue"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/enqueue/tree/1.258.1"
+                "source": "https://github.com/ecotoneframework/enqueue/tree/1.259.1"
             },
             "funding": [
                 {
@@ -1299,24 +1299,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-14T20:20:17+00:00"
+            "time": "2025-06-15T14:21:51+00:00"
         },
         {
             "name": "ecotone/jms-converter",
-            "version": "1.258.1",
+            "version": "1.259.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/jms-converter.git",
-                "reference": "d032d611dcf1cd3839777b51003469469199d6c9"
+                "reference": "19dbe4c0a1219fec3c7bc3fb16d3fc52b3efff66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/d032d611dcf1cd3839777b51003469469199d6c9",
-                "reference": "d032d611dcf1cd3839777b51003469469199d6c9",
+                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/19dbe4c0a1219fec3c7bc3fb16d3fc52b3efff66",
+                "reference": "19dbe4c0a1219fec3c7bc3fb16d3fc52b3efff66",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.258.1",
+                "ecotone/ecotone": "~1.259.1",
                 "jms/serializer": "^3.32",
                 "symfony/cache": "^5.4|^6.1|^7.0"
             },
@@ -1332,7 +1332,7 @@
                     "repository": "jms-converter"
                 },
                 "branch-alias": {
-                    "dev-main": "1.258.1-dev"
+                    "dev-main": "1.259.1-dev"
                 },
                 "license-info": {
                     "Apache-2.0": {
@@ -1350,7 +1350,7 @@
                         "../local_packages.json"
                     ]
                 },
-                "release-time": "2025-06-14 20:19:47"
+                "release-time": "2025-06-15 14:21:20"
             },
             "autoload": {
                 "psr-4": {
@@ -1380,7 +1380,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.258.1"
+                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.259.1"
             },
             "funding": [
                 {
@@ -1388,29 +1388,29 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-14T20:20:18+00:00"
+            "time": "2025-06-15T14:21:56+00:00"
         },
         {
             "name": "ecotone/laravel",
-            "version": "1.258.1",
+            "version": "1.259.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/laravel.git",
-                "reference": "470385190da4d9e89124469c8612290964f9cb94"
+                "reference": "c79de3915a629ce190ab36dcc95c21fa1fedd701"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/laravel/zipball/470385190da4d9e89124469c8612290964f9cb94",
-                "reference": "470385190da4d9e89124469c8612290964f9cb94",
+                "url": "https://api.github.com/repos/ecotoneframework/laravel/zipball/c79de3915a629ce190ab36dcc95c21fa1fedd701",
+                "reference": "c79de3915a629ce190ab36dcc95c21fa1fedd701",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.258.1",
+                "ecotone/ecotone": "~1.259.1",
                 "laravel/framework": "^9.5.2|^10.0|^11.0|^12.0|^13.0"
             },
             "require-dev": {
                 "behat/behat": "^3.10",
-                "ecotone/dbal": "~1.258.1",
+                "ecotone/dbal": "~1.259.1",
                 "guzzlehttp/psr7": "^2.0",
                 "moneyphp/money": "^4.1.0",
                 "nesbot/carbon": "^2.71|^3.0",
@@ -1432,7 +1432,7 @@
                     ]
                 },
                 "branch-alias": {
-                    "dev-main": "1.258.1-dev"
+                    "dev-main": "1.259.1-dev"
                 },
                 "license-info": {
                     "Apache-2.0": {
@@ -1450,7 +1450,7 @@
                         "../local_packages.json"
                     ]
                 },
-                "release-time": "2025-06-14 20:19:47"
+                "release-time": "2025-06-15 14:21:20"
             },
             "autoload": {
                 "psr-4": {
@@ -1480,7 +1480,7 @@
                 "messaging"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/laravel/tree/1.258.1"
+                "source": "https://github.com/ecotoneframework/laravel/tree/1.259.1"
             },
             "funding": [
                 {
@@ -1488,24 +1488,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-14T20:20:16+00:00"
+            "time": "2025-06-15T14:21:55+00:00"
         },
         {
             "name": "ecotone/open-telemetry",
-            "version": "1.258.1",
+            "version": "1.259.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/open-telemetry.git",
-                "reference": "b94815fdf625517e43b42243f1e183bf5350eabe"
+                "reference": "77691c00bab34d11c2033dd2d1a8a384f30c6729"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/open-telemetry/zipball/b94815fdf625517e43b42243f1e183bf5350eabe",
-                "reference": "b94815fdf625517e43b42243f1e183bf5350eabe",
+                "url": "https://api.github.com/repos/ecotoneframework/open-telemetry/zipball/77691c00bab34d11c2033dd2d1a8a384f30c6729",
+                "reference": "77691c00bab34d11c2033dd2d1a8a384f30c6729",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.258.1",
+                "ecotone/ecotone": "~1.259.1",
                 "open-telemetry/sdk": "^1.0.0"
             },
             "require-dev": {
@@ -1529,7 +1529,7 @@
                     "repository": "open-telemetry"
                 },
                 "branch-alias": {
-                    "dev-main": "1.258.1-dev"
+                    "dev-main": "1.259.1-dev"
                 },
                 "license-info": {
                     "Apache-2.0": {
@@ -1547,7 +1547,7 @@
                         "../local_packages.json"
                     ]
                 },
-                "release-time": "2025-06-14 20:19:47"
+                "release-time": "2025-06-15 14:21:20"
             },
             "autoload": {
                 "psr-4": {
@@ -1574,7 +1574,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ecotoneframework/open-telemetry/issues",
-                "source": "https://github.com/ecotoneframework/open-telemetry/tree/1.258.1"
+                "source": "https://github.com/ecotoneframework/open-telemetry/tree/1.259.1"
             },
             "funding": [
                 {
@@ -1582,7 +1582,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-14T20:20:17+00:00"
+            "time": "2025-06-15T14:21:56+00:00"
         },
         {
             "name": "egulias/email-validator",

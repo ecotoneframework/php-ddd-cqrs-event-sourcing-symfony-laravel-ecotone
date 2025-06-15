@@ -212,6 +212,8 @@ services:
     environment:
       SERVICES: '[{"name":"customer_service","databaseDsn":"mysql://admin:hash@customer-app-database/customer_app"},{"name":"backoffice_service","databaseDsn":"pgsql://ecotone:secret@backoffice-app-database:5432/ecotone"}]'
       AMQP_DSN: "amqp://guest:guest@rabbitmq:5672//"
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
     ports:
       - 3006:80
   jaeger:
