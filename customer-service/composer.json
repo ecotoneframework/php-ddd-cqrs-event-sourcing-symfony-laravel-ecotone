@@ -13,18 +13,18 @@
         "ecotone/open-telemetry": "^1.229.1",
         "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^12.0",
-        "laravel/sanctum": "^3.3",
+        "laravel/sanctum": "^4.2",
         "laravel/tinker": "^2.9",
         "open-telemetry/exporter-otlp": "*",
-        "open-telemetry/opentelemetry-auto-laravel": "^0.0.22",
+        "open-telemetry/opentelemetry-auto-laravel": "^1.4.0",
         "open-telemetry/transport-grpc": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
+        "nunomaduro/collision": "^8.8",
+        "phpunit/phpunit": "*",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
@@ -40,6 +40,9 @@
         }
     },
     "scripts": {
+        "pre-command-run": [
+            "@putenv OTEL_PHP_AUTOLOAD_ENABLED=false"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

@@ -61,6 +61,9 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
+        "pre-command-run": [
+          "@putenv OTEL_PHP_AUTOLOAD_ENABLED=false"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
