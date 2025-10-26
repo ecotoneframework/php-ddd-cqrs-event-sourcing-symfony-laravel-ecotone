@@ -23,9 +23,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(AmqpConnectionFactory::class, function () {
             return new AmqpConnectionFactory("amqp+lib://guest:guest@rabbitmq:5672//");
         });
-        $this->app->singleton(DbalConnectionFactory::class, function () {
-            return DbalConnection::create(DB::connection()->getDoctrineConnection());
-        });
         $this->app->singleton(TracerProviderInterface::class, function () {
             return Globals::tracerProvider();
         });

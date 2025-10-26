@@ -4,6 +4,7 @@ namespace App\Infrastructure;
 
 use Ecotone\Amqp\AmqpBackedMessageChannelBuilder;
 use Ecotone\Amqp\Distribution\AmqpDistributedBusConfiguration;
+use Ecotone\Laravel\Config\LaravelConnectionReference;
 use Ecotone\Messaging\Attribute\ServiceContext;
 use Ecotone\OpenTelemetry\Configuration\TracingConfiguration;
 
@@ -15,6 +16,12 @@ class EcotoneConfiguration
     public function asynchronousNotifications()
     {
         return AmqpBackedMessageChannelBuilder::create(self::NOTIFICATIONS_CHANNEL);
+    }
+
+    #[ServiceContext]
+    public function laravelConnection(): LaravelConnectionReference
+    {
+        return LaravelConnectionReference::defaultConnection('mysql');
     }
 
     #[ServiceContext]

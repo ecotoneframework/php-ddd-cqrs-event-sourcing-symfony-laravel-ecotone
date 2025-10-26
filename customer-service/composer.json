@@ -12,7 +12,7 @@
         "ecotone/laravel": "^1.229.1",
         "ecotone/open-telemetry": "^1.229.1",
         "guzzlehttp/guzzle": "^7.8",
-        "laravel/framework": "^10.0",
+        "laravel/framework": "^12.0",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.9",
         "open-telemetry/exporter-otlp": "*",
