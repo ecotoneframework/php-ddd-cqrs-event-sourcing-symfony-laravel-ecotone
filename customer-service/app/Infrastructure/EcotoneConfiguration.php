@@ -4,6 +4,7 @@ namespace App\Infrastructure;
 
 use Ecotone\Amqp\AmqpBackedMessageChannelBuilder;
 use Ecotone\Amqp\Distribution\AmqpDistributedBusConfiguration;
+use Ecotone\Dbal\Configuration\DbalConfiguration;
 use Ecotone\Laravel\Config\LaravelConnectionReference;
 use Ecotone\Messaging\Attribute\ServiceContext;
 use Ecotone\OpenTelemetry\Configuration\TracingConfiguration;
@@ -22,6 +23,13 @@ class EcotoneConfiguration
     public function laravelConnection(): LaravelConnectionReference
     {
         return LaravelConnectionReference::defaultConnection('mysql');
+    }
+
+    #[ServiceContext]
+    public function dbalConfiguration(): DbalConfiguration
+    {
+        return DbalConfiguration::createWithDefaults()
+            ->withAutomaticTableInitialization(false);
     }
 
     #[ServiceContext]

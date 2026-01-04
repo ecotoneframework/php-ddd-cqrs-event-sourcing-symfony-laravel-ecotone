@@ -13,7 +13,9 @@ class EcotoneConfiguration
     public function getDbalConfiguration(): DbalConfiguration
     {
         return DbalConfiguration::createWithDefaults()
-            ->withDoctrineORMRepositories(true);
+            ->withDoctrineORMRepositories(true)
+//            managed by bin/console ecotone:migration:database:setup
+            ->withAutomaticTableInitialization(false);
     }
 
     #[ServiceContext]

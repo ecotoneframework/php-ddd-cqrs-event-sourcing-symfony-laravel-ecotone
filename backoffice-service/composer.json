@@ -1,93 +1,93 @@
 {
-    "name": "ecotone-examples/php-ddd-cqrs-event-sourcing-ecotone",
-    "type": "project",
-    "license": "proprietary",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-        "php": "^8.2",
-        "ext-ctype": "*",
-        "ext-iconv": "*",
-        "ext-pdo": "*",
-        "ext-pdo_pgsql": "*",
-        "composer/package-versions-deprecated": "1.11.99.4",
-        "doctrine/doctrine-bundle": "^2.11",
-        "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.10",
-        "ecotone/amqp": "^1.232.0",
-        "ecotone/jms-converter": "^1.232.0",
-        "ecotone/open-telemetry": "^1.232.0",
-        "ecotone/pdo-event-sourcing": "^1.232.0",
-        "ecotone/symfony-bundle": "^1.232.0",
-        "open-telemetry/exporter-otlp": "*",
-        "open-telemetry/opentelemetry-auto-symfony": "^1.0.0beta22",
-        "open-telemetry/transport-grpc": "*",
-        "symfony/cache": "^7.0",
-        "symfony/console": "^7.0",
-        "symfony/dotenv": "^7.0",
-        "symfony/flex": "^2.4.2",
-        "symfony/framework-bundle": "^7.0",
-        "symfony/monolog-bundle": "^3.10",
-        "symfony/runtime": "^7.0",
-        "symfony/twig-bundle": "^7.0",
-        "symfony/yaml": "^7.0"
+  "name": "ecotone-examples/php-ddd-cqrs-event-sourcing-ecotone",
+  "type": "project",
+  "license": "proprietary",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^8.2",
+    "ext-ctype": "*",
+    "ext-iconv": "*",
+    "ext-pdo": "*",
+    "ext-pdo_pgsql": "*",
+    "composer/package-versions-deprecated": "1.11.99.4",
+    "doctrine/doctrine-bundle": "^2.11",
+    "doctrine/doctrine-migrations-bundle": "^3.2",
+    "doctrine/orm": "^2.10",
+    "ecotone/amqp": "^1.289.0",
+    "ecotone/jms-converter": "^1.289.0",
+    "ecotone/open-telemetry": "^1.289.0",
+    "ecotone/pdo-event-sourcing": "^1.289.0",
+    "ecotone/symfony-bundle": "^1.289.0",
+    "open-telemetry/exporter-otlp": "*",
+    "open-telemetry/opentelemetry-auto-symfony": "^1.0.0beta22",
+    "open-telemetry/transport-grpc": "*",
+    "symfony/cache": "^7.0",
+    "symfony/console": "^7.0",
+    "symfony/dotenv": "^7.0",
+    "symfony/flex": "^2.4.2",
+    "symfony/framework-bundle": "^7.0",
+    "symfony/monolog-bundle": "^3.10",
+    "symfony/runtime": "^7.0",
+    "symfony/twig-bundle": "^7.0",
+    "symfony/yaml": "^7.0"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": {
+      "*": "dist"
     },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": {
-            "*": "dist"
-        },
-        "sort-packages": true,
-        "allow-plugins": {
-            "symfony/flex": true,
-            "php-http/discovery": false,
-            "symfony/runtime": true,
-            "tbachert/spi": false
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
-    },
-    "replace": {
-        "symfony/polyfill-ctype": "*",
-        "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*"
-    },
-    "scripts": {
-        "pre-command-run": [
-          "@putenv OTEL_PHP_AUTOLOAD_ENABLED=false"
-        ],
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ]
-    },
-    "conflict": {
-        "symfony/symfony": "*",
-        "symfony/translation-contracts": ">=3.0"
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": false,
-            "require": "^7.0"
-        }
-    },
-    "require-dev": {
-        "symfony/debug-bundle": "^7.0",
-        "symfony/stopwatch": "^7.0",
-        "symfony/web-profiler-bundle": "^7.0"
+    "sort-packages": true,
+    "allow-plugins": {
+      "symfony/flex": true,
+      "php-http/discovery": false,
+      "symfony/runtime": true,
+      "tbachert/spi": false
     }
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "replace": {
+    "symfony/polyfill-ctype": "*",
+    "symfony/polyfill-iconv": "*",
+    "symfony/polyfill-php72": "*"
+  },
+  "scripts": {
+    "pre-command-run": [
+      "@putenv OTEL_PHP_AUTOLOAD_ENABLED=false"
+    ],
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    },
+    "post-install-cmd": [
+      "@auto-scripts"
+    ],
+    "post-update-cmd": [
+      "@auto-scripts"
+    ]
+  },
+  "conflict": {
+    "symfony/symfony": "*",
+    "symfony/translation-contracts": ">=3.0"
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": false,
+      "require": "^7.0"
+    }
+  },
+  "require-dev": {
+    "symfony/debug-bundle": "^7.0",
+    "symfony/stopwatch": "^7.0",
+    "symfony/web-profiler-bundle": "^7.0"
+  }
 }
