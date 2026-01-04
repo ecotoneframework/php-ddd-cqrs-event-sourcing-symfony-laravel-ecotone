@@ -5,6 +5,7 @@ namespace App\Infrastructure;
 use Ecotone\Amqp\Distribution\AmqpDistributedBusConfiguration;
 use Ecotone\Dbal\Configuration\DbalConfiguration;
 use Ecotone\Messaging\Attribute\ServiceContext;
+use Ecotone\Messaging\Channel\Manager\ChannelInitializationConfiguration;
 use Ecotone\OpenTelemetry\Configuration\TracingConfiguration;
 
 class EcotoneConfiguration
@@ -16,6 +17,12 @@ class EcotoneConfiguration
             ->withDoctrineORMRepositories(true)
 //            managed by bin/console ecotone:migration:database:setup
             ->withAutomaticTableInitialization(false);
+    }
+
+    public function channelConfiguration(): ChannelInitializationConfiguration
+    {
+        return ChannelInitializationConfiguration::createWithDefaults()
+                ->withAutomaticChannelInitialization(false);
     }
 
     #[ServiceContext]

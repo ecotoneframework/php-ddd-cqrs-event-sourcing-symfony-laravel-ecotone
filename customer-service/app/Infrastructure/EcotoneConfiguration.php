@@ -7,6 +7,7 @@ use Ecotone\Amqp\Distribution\AmqpDistributedBusConfiguration;
 use Ecotone\Dbal\Configuration\DbalConfiguration;
 use Ecotone\Laravel\Config\LaravelConnectionReference;
 use Ecotone\Messaging\Attribute\ServiceContext;
+use Ecotone\Messaging\Channel\Manager\ChannelInitializationConfiguration;
 use Ecotone\OpenTelemetry\Configuration\TracingConfiguration;
 
 class EcotoneConfiguration
@@ -30,6 +31,12 @@ class EcotoneConfiguration
     {
         return DbalConfiguration::createWithDefaults()
             ->withAutomaticTableInitialization(false);
+    }
+
+    public function channelConfiguration(): ChannelInitializationConfiguration
+    {
+        return ChannelInitializationConfiguration::createWithDefaults()
+            ->withAutomaticChannelInitialization(false);
     }
 
     #[ServiceContext]
